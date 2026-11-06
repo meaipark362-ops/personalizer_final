@@ -21,3 +21,4 @@ yarn-debug.log*
 # Temporary Test Scratch & Headless Browser Profiles
 scratch/
 .temp_*
+
