@@ -208,47 +208,34 @@
     }
   });
 
-  /* ───────────── Keyboard ───────────── */
+  /* ───────────── Universal Advance (Spacebar / Mouse Click) ───────────── */
 
-  const NEXT_KEYS = ['ArrowDown', 'ArrowRight', 'PageDown', ' '];
-  const PREV_KEYS = ['ArrowUp', 'ArrowLeft', 'PageUp'];
-
-  addEventListener('keydown', (e) => {
-    const k = e.key;
+  function advancePresentation() {
     const onProduct = state.chapter === PRODUCT_CHAPTER;
 
-    const inControl = e.target.closest && e.target.closest('button');
-    if (inControl && (k === ' ' || k === 'Enter')) return;
-
-    if (state.chapter === 0 && k === ' ') {
+    if (state.chapter === 0) {
       if (s0Stage === 0) {
-        // 1st SPACE: Reveal PERSONALIZER
+        // 1st SPACE / Click: Reveal PERSONALIZER
         s0Stage = 1;
         const s0 = $('#s0');
         if (s0) s0.classList.add('show-title');
-        e.preventDefault();
         return;
       }
       if (s0Stage === 1) {
-        // 2nd SPACE: Ring ascends + Screen rises simultaneously
-        if (spaceLocked) {
-          e.preventDefault();
-          return;
-        }
+        // 2nd SPACE / Click: Ring ascends + Screen rises simultaneously
+        if (spaceLocked) return;
         spaceLocked = true;
         s0Stage = 2;
         heroRingState = 1;
         heroRingStartTime = performance.now();
         document.documentElement.style.scrollSnapType = 'none';
         document.documentElement.style.scrollBehavior = 'auto';
-        e.preventDefault();
         return;
       }
       // s0Stage === 2: Transition running, block duplicate presses
-      e.preventDefault();
       return;
-    } else if (state.chapter === 1 && k === ' ') {
-      // Slide 2: If animation is still running, 1st SPACE completes reveal; 2nd SPACE advances to Slide 3
+    } else if (state.chapter === 1) {
+      // Slide 2: If animation is still running, 1st SPACE / Click completes reveal; 2nd advances to Slide 3
       const s1 = $('#s1');
       const elapsed = Date.now() - (state.s1StartTime || 0);
       if (s1 && !s1.classList.contains('anim-complete') && elapsed < 11500) {
@@ -256,9 +243,8 @@
       } else {
         goTo(2);
       }
-      e.preventDefault();
-    } else if (state.chapter === 2 && k === ' ') {
-      // Slide 3 (Chapter 02 Product Showcase): 1st SPACE fast-forwards to Platform & Scene 1; next SPACE advances through scenes 2 & 3, then to Demo
+    } else if (state.chapter === 2) {
+      // Slide 3 (Chapter 02 Product Showcase): 1st SPACE / Click fast-forwards to Platform & Scene 1; next advances through scenes 2 & 3, then to Demo
       const s2 = $('#s2');
       const elapsed = (performance.now() - (state.s2StartTime || 0)) * 0.001;
       if (s2 && !s2.classList.contains('show-platform') && elapsed < 3.1) {
@@ -274,7 +260,33 @@
           goTo(3);
         }, 360);
       }
+    } else if (onProduct && window.Demo) {
+      // Demo screen: 4 SPACE / Clicks run MOVE -> PINCH -> CLICK -> TWIST; 5th moves to next chapter
+      if (!window.Demo.next(false)) goTo(state.chapter + 1);
+    } else {
+      // Advance chapters anywhere on the site
+      clearTimeout(state.introTimer);
+      goTo(state.chapter + 1);
+    }
+  }
+  window.advancePresentation = advancePresentation;
+
+  /* ───────────── Keyboard & Mouse Controls ───────────── */
+
+  const NEXT_KEYS = ['ArrowDown', 'ArrowRight', 'PageDown', ' '];
+  const PREV_KEYS = ['ArrowUp', 'ArrowLeft', 'PageUp'];
+
+  addEventListener('keydown', (e) => {
+    const k = e.key;
+    const onProduct = state.chapter === PRODUCT_CHAPTER;
+
+    const inControl = e.target.closest && e.target.closest('button, input, textarea, select');
+    if (inControl && (k === ' ' || k === 'Enter')) return;
+
+    if (k === ' ') {
+      advancePresentation();
       e.preventDefault();
+      return;
     } else if (state.chapter === 2 && (k === 'ArrowRight' || k === 'ArrowDown')) {
       if (curSaasScene < 3) {
         setSaasScene(curSaasScene + 1, true);
@@ -285,15 +297,6 @@
         setSaasScene(curSaasScene - 1, true);
         e.preventDefault();
       }
-    } else if (onProduct && k === ' ' && window.Demo) {
-      // Demo screen: 4 SPACE presses run MOVE -> PINCH -> CLICK -> TWIST; 5th SPACE moves to next chapter
-      if (!window.Demo.next(false)) goTo(state.chapter + 1);
-      e.preventDefault();
-    } else if (k === ' ') {
-      // SPACE advances chapters anywhere on the site
-      clearTimeout(state.introTimer);
-      goTo(state.chapter + 1);
-      e.preventDefault();
     } else if (onProduct && (k === 'ArrowRight' || k === 'ArrowLeft') && window.Demo && window.Demo.step(k === 'ArrowRight' ? 1 : -1)) {
       e.preventDefault();
     } else if (NEXT_KEYS.includes(k)) {
@@ -307,6 +310,19 @@
     else if (k === 'p' || k === 'P') toggleNotes();
     else if (k === 't' || k === 'T') toggleTimer();
     else if (k === 'r' || k === 'R') resetTimer();
+  });
+
+  /* ───────────── Global Mouse Click Advance ───────────── */
+  addEventListener('click', (e) => {
+    // Only primary (left) click
+    if (e.button !== 0) return;
+
+    // Do not trigger advance if clicking on dedicated controls
+    if (e.target.closest('button, a, input, select, textarea, #nav, #hud, #notes, #zenTimer, .saas-step-btn')) {
+      return;
+    }
+
+    advancePresentation();
   });
 
   /* ───────────── Three.js Right-Edge 1/4 Ring + 4-Color Ambient Cycle ───────────── */

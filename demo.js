@@ -687,12 +687,6 @@
     }
   };
 
-  // Mouse click on the demo chapter plays the next gesture: MOVE → PINCH → CLICK → TWIST
-  section.addEventListener('click', (e) => {
-    if (e.target.closest('button, a')) return;
-    window.Demo.next(true);
-  });
-
   initThree();
   setSlide(0);
   setGesture(0, false);
