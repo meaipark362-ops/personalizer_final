@@ -916,453 +916,170 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   opacity: 1;
 }
 
-/* ───────────── Right: Architectural SaaS Platform View (NO window chrome) ───────────── */
-.saas-platform-view {
+/* ───────────── Right: Architectural Editorial Panel (No AI Template Clichés) ───────────── */
+.saas-platform-view.editorial-panel {
   position: absolute;
-  right: clamp(24px, 4.5vw, 76px);
+  right: clamp(24px, 4vw, 68px);
   top: 50%;
   transform: translateY(-50%) translateX(35px);
-  width: clamp(560px, 50vw, 840px);
-  padding: clamp(28px, 3.8vh, 44px) clamp(30px, 3.5vw, 48px);
-  background: radial-gradient(ellipse at 40% 30%, rgba(255, 107, 91, 0.05) 0%, rgba(9, 15, 26, 0.82) 65%, rgba(6, 10, 18, 0.92) 100%);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(244, 237, 224, 0.09);
-  border-radius: 24px;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(244, 237, 224, 0.12);
+  width: clamp(560px, 48vw, 800px);
+  padding: clamp(32px, 3.8vh, 46px) clamp(32px, 3.6vw, 46px);
+  background-color: #FAF9F6;
+  color: #1A1A18;
+  border: 1px solid #E5E2DC;
+  border-radius: 2px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   pointer-events: auto;
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: clamp(18px, 2.4vh, 26px);
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 20px;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
   opacity: 0;
   z-index: 10;
 }
 
-#s2.show-platform .saas-platform-view {
+#s2.show-platform .saas-platform-view.editorial-panel {
   transform: translateY(-50%) translateX(0);
   opacity: 1;
 }
 
-/* Brand Signature Header */
-.saas-brand-header {
+.ed-brand-header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(244, 237, 224, 0.08);
 }
 
-.saas-brand-mark {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.26em;
-  color: var(--cream);
-  text-shadow: 0 0 16px rgba(244, 237, 224, 0.25);
-}
-
-.saas-type-tag {
-  font-size: 11px;
+.ed-brand-title {
+  font-family: "Noto Serif KR", serif;
+  font-size: 22px;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: rgba(244, 237, 224, 0.65);
-  background: rgba(244, 237, 224, 0.06);
-  border: 1px solid rgba(244, 237, 224, 0.12);
-  padding: 4px 12px;
-  border-radius: 999px;
+  letter-spacing: -0.01em;
+  color: #1A1A18;
 }
 
-/* Dynamic Narrative Scenes Viewport */
-.saas-scenes-viewport {
-  position: relative;
-  min-height: clamp(96px, 13vh, 126px);
+.ed-brand-meta {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #7E7C76;
 }
 
-.saas-scene {
-  position: absolute;
-  left: 0;
-  top: 0;
+.ed-accent-divider {
   width: 100%;
-  opacity: 0;
-  transform: translateY(14px);
-  pointer-events: none;
-  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 1px;
+  background: linear-gradient(to right, #D9472B 110px, #E5E2DC 110px);
 }
 
-.saas-scene.active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+.ed-hero-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.saas-badge-wrap {
-  margin-bottom: 10px;
+.ed-category-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #7E7C76;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.saas-badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--coral);
-  background: rgba(255, 107, 91, 0.08);
-  border: 1px solid rgba(255, 107, 91, 0.28);
-  padding: 5px 14px;
-  border-radius: 999px;
-  box-shadow: 0 0 16px rgba(255, 107, 91, 0.12);
-}
-
-.saas-title {
-  font-size: clamp(24px, 2.5vw, 36px);
-  font-weight: 800;
-  line-height: 1.24;
+.ed-hero-title {
+  font-family: "Noto Serif KR", serif;
+  font-size: clamp(26px, 2.5vw, 35px);
+  font-weight: 900;
+  line-height: 1.25;
   letter-spacing: -0.025em;
-  color: var(--cream);
+  color: #1A1A18;
   margin: 0;
 }
 
-.saas-title .coral-accent {
-  color: var(--coral);
-  text-shadow: 0 0 24px rgba(255, 107, 91, 0.4);
+.ed-hero-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #5C5A55;
+  margin: 0;
 }
 
-/* Architectural Ingestion & Integration Diagram */
-.saas-arch-diagram {
-  position: relative;
+.ed-specs-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ed-spec-row {
   display: grid;
-  grid-template-columns: 150px 48px 180px 48px 1fr;
-  align-items: center;
-  padding: clamp(18px, 2.4vh, 24px) clamp(16px, 2vw, 24px);
-  background: rgba(14, 22, 36, 0.45);
-  border: 1px solid rgba(244, 237, 224, 0.08);
-  border-radius: 16px;
-  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.3);
+  grid-template-columns: 150px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid #E5E2DC;
+  align-items: baseline;
 }
 
-/* Left: 3 Third-Party Device Ingestion Gateways */
-.saas-nodes-col {
+.ed-spec-row:last-child {
+  border-bottom: 1px solid #E5E2DC;
+}
+
+.ed-spec-key {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 3px;
 }
 
-.saas-api-node {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: rgba(244, 237, 224, 0.04);
-  border: 1px solid rgba(244, 237, 224, 0.12);
-  border-radius: 8px;
-  transition: all 0.35s ease;
-}
-
-.saas-api-node:hover,
-#s2.saas-focus-api .saas-api-node {
-  background: rgba(255, 107, 91, 0.08);
-  border-color: rgba(255, 107, 91, 0.35);
-  box-shadow: 0 0 14px rgba(255, 107, 91, 0.18);
-}
-
-.api-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--coral);
-  box-shadow: 0 0 8px var(--coral);
-}
-
-.api-tag {
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--coral);
-  background: rgba(255, 107, 91, 0.14);
-  padding: 2px 5px;
-  border-radius: 4px;
-}
-
-.api-name {
-  font-size: 11.5px;
+.ed-device-tag {
+  font-size: 11px;
   font-weight: 700;
+  color: #D9472B;
   letter-spacing: 0.02em;
-  color: var(--cream);
-  white-space: nowrap;
 }
 
-/* Flow Channels into Engine Core */
-.saas-flow-channels {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
+.ed-tech-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1A1A18;
 }
 
-.channel-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 107, 91, 0.7), rgba(244, 237, 224, 0.25));
-  position: relative;
+.ed-spec-val {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #5C5A55;
 }
 
-.channel-line::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: -2.5px;
-  width: 5px;
-  height: 5px;
-  border-top: 1.5px solid rgba(255, 107, 91, 0.9);
-  border-right: 1.5px solid rgba(255, 107, 91, 0.9);
-  transform: rotate(45deg);
-}
-
-/* Center: Independent Subscription SaaS Platform & Unified Engine */
-.saas-engine-core {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 12px;
-  background: radial-gradient(circle, rgba(255, 107, 91, 0.12) 0%, rgba(14, 22, 36, 0.6) 80%);
-  border: 1px solid rgba(255, 107, 91, 0.35);
-  border-radius: 14px;
-  text-align: center;
-  box-shadow: 0 0 28px rgba(255, 107, 91, 0.18), inset 0 0 16px rgba(255, 107, 91, 0.1);
-  overflow: hidden;
-}
-
-.core-orbit {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.core-orbit-1 {
-  width: 110px;
-  height: 110px;
-  border: 1px dashed rgba(255, 107, 91, 0.2);
-  animation: coreOrbitSpin 14s linear infinite;
-}
-
-.core-orbit-2 {
-  width: 130px;
-  height: 130px;
-  border: 1px solid rgba(244, 237, 224, 0.08);
-}
-
-@keyframes coreOrbitSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.core-center-orb {
-  position: relative;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1.5px solid var(--coral);
+.ed-actions-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
-  box-shadow: 0 0 16px rgba(255, 107, 91, 0.5);
-  z-index: 2;
+  gap: 20px;
+  padding-top: 4px;
 }
 
-.core-pulse-wave {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 1px solid var(--coral);
-  animation: coreWavePulse 2.4s ease-out infinite;
-}
-
-@keyframes coreWavePulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(2.4); opacity: 0; }
-}
-
-.core-center-inner {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--coral);
-  box-shadow: 0 0 10px var(--coral);
-}
-
-.core-text-block {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.core-brand {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.22em;
-  color: rgba(244, 237, 224, 0.65);
-}
-
-.core-title {
-  font-size: 13.5px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: var(--cream);
-  text-shadow: 0 0 12px rgba(255, 107, 91, 0.35);
-}
-
-/* Unified Output Flow */
-.saas-output-flow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.output-beam-line {
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--coral), rgba(244, 237, 224, 0.8));
-  position: relative;
-  box-shadow: 0 0 10px rgba(255, 107, 91, 0.6);
-}
-
-.output-beam-line::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: -3px;
-  width: 6px;
-  height: 6px;
-  border-top: 2px solid var(--cream);
-  border-right: 2px solid var(--cream);
-  transform: rotate(45deg);
-}
-
-/* Right Output Node: Unified Computing Experience */
-.saas-output-node {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: rgba(244, 237, 224, 0.05);
-  border: 1px solid rgba(244, 237, 224, 0.15);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.35s ease;
-}
-
-#s2.saas-focus-integration .saas-output-node {
-  background: rgba(255, 107, 91, 0.1);
-  border-color: rgba(255, 107, 91, 0.4);
-  box-shadow: 0 0 20px rgba(255, 107, 91, 0.25);
-}
-
-.output-icon-box {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  background: rgba(255, 107, 91, 0.15);
-  border: 1px solid rgba(255, 107, 91, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.output-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-  background: var(--coral);
-  box-shadow: 0 0 10px var(--coral);
-}
-
-.output-text-block {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.output-title {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: var(--cream);
-}
-
-.output-sub {
-  font-size: 10px;
+.ed-btn-primary {
+  display: inline-block;
+  background-color: #D9472B;
+  color: #FFFFFF;
+  font-size: 14.5px;
   font-weight: 600;
-  color: rgba(244, 237, 224, 0.55);
-  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 11px 22px;
+  border: 1px solid #D9472B;
+  border-radius: 2px;
+  transition: background-color 0.15s ease;
 }
 
-/* Scene Stepper Navigation */
-.saas-stepper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid rgba(244, 237, 224, 0.08);
+.ed-btn-primary:hover {
+  background-color: #BF3B21;
+  border-color: #BF3B21;
 }
 
-.saas-step-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: all 0.25s ease;
-  font-family: inherit;
+.ed-link-secondary {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A18;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-.saas-step-btn .step-num {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: rgba(244, 237, 224, 0.45);
-  transition: color 0.25s ease;
-}
-
-.saas-step-btn .step-text {
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(244, 237, 224, 0.55);
-  transition: color 0.25s ease;
-}
-
-.saas-step-btn:hover .step-text,
-.saas-step-btn:hover .step-num {
-  color: var(--cream);
-}
-
-.saas-step-btn.active {
-  background: rgba(255, 107, 91, 0.1);
-}
-
-.saas-step-btn.active .step-num {
-  color: var(--coral);
-}
-
-.saas-step-btn.active .step-text {
-  color: var(--cream);
-}
-
-.step-wire {
-  flex: 1;
-  height: 1px;
-  background: rgba(244, 237, 224, 0.1);
-  margin: 0 10px;
+.ed-link-secondary:hover {
+  color: #D9472B;
 }
 
 /* Animations */

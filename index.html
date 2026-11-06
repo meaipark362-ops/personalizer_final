@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>3BIT3BOARD PERSONALIZER — 투자자 발표</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="style.css">
@@ -142,125 +145,67 @@
       <div class="ring-caption ring-caption-2" id="ringCaption2">오우라 링</div>
       <div class="ring-caption ring-caption-3" id="ringCaption3">갤럭시 링</div>
 
-      <!-- Right side: Independent Subscription SaaS Software Platform (NO window chrome) -->
-      <div class="saas-platform-view" id="saasPlatformView">
-        <!-- Brand Signature (Refined, architectural) -->
-        <div class="saas-brand-header">
-          <span class="saas-brand-mark">PERSONALIZER</span>
-          <span class="saas-type-tag">독립형 SaaS 플랫폼</span>
+      <!-- Right side: Editorial Maker/Developer SaaS Software Section -->
+      <div class="saas-platform-view editorial-panel" id="saasPlatformView">
+        <!-- Top Editorial Header Line -->
+        <div class="ed-brand-header">
+          <span class="ed-brand-title">Personalizer</span>
+          <span class="ed-brand-meta">Agnostic Wearable HID Layer</span>
         </div>
 
-        <!-- Dynamic Narrative Scenes (Scene 1, Scene 2, Scene 3) -->
-        <div class="saas-scenes-viewport">
-          <!-- Scene 1: Independent Subscription Software Service -->
-          <div class="saas-scene saas-scene-1 active" id="saasScene1">
-            <div class="saas-badge-wrap">
-              <span class="saas-badge">구독형 소프트웨어 서비스(SaaS)</span>
-            </div>
-            <h2 class="saas-title">
-              하드웨어가 아닌,<br>
-              <span class="coral-accent">소프트웨어</span>를 제공합니다.
-            </h2>
-          </div>
+        <!-- Point Accent Hairline (Single orange-red #D9472B rule line) -->
+        <div class="ed-accent-divider" aria-hidden="true"></div>
 
-          <!-- Scene 2: Third-party Hardware Connection -->
-          <div class="saas-scene saas-scene-2" id="saasScene2">
-            <div class="saas-badge-wrap">
-              <span class="saas-badge">서드파티 API 및 연동 기술을 통한 하드웨어 연결</span>
-            </div>
-            <h2 class="saas-title">
-              다양한 제조사의 기기를<br>
-              <span class="coral-accent">하나로.</span>
-            </h2>
-          </div>
-
-          <!-- Scene 3: Heterogeneous Data Integration & Single Experience -->
-          <div class="saas-scene saas-scene-3" id="saasScene3">
-            <div class="saas-badge-wrap">
-              <span class="saas-badge">기기별 센서 데이터와 통신 방식의 차이를 고려한 통합 플랫폼</span>
-            </div>
-            <h2 class="saas-title">
-              기기는 달라도,<br>
-              <span class="coral-accent">사용 경험은 하나로.</span>
-            </h2>
-          </div>
+        <!-- Main Narrative & Heading (Noto Serif KR, bold, dark, no single-word colored tricks) -->
+        <div class="ed-hero-block">
+          <span class="ed-category-label">독립형 웨어러블 입력 SaaS</span>
+          <h2 class="ed-hero-title">
+            이미 보유한 스마트링을<br>
+            컴퓨터 가상 제어 장치로<br>
+            직접 전환합니다.
+          </h2>
+          <p class="ed-hero-desc">
+            Personalizer는 특정 하드웨어 제조사에 종속되지 않는 독립형 소프트웨어 플랫폼입니다. 상용 스마트링의 IMU 센서 데이터를 로컬 가상 HID 신호로 변환하여, 사용자의 신체 조건이나 작업 환경에 맞춘 대체 입력 체계를 자유롭게 빌드할 수 있습니다.
+          </p>
         </div>
 
-        <!-- SaaS Core Architecture & Data Convergence Diagram -->
-        <div class="saas-arch-diagram" id="saasArchDiagram">
-          <!-- Left: 3 Third-Party Device Ingestion Gateways -->
-          <div class="saas-nodes-col">
-            <div class="saas-api-node" id="swStreamRow1">
-              <span class="api-dot"></span>
-              <span class="api-tag">API</span>
-              <span class="api-name">미지아 연동</span>
+        <!-- Technical Specification Rows (Sharp 1px hair dividers, no cards, no arrows, no concentric circles) -->
+        <div class="ed-specs-list">
+          <div class="ed-spec-row" id="swStreamRow1">
+            <div class="ed-spec-key">
+              <span class="ed-device-tag">미지아 연동</span>
+              <span class="ed-tech-name">기기 독립성</span>
             </div>
-            <div class="saas-api-node" id="swStreamRow2">
-              <span class="api-dot"></span>
-              <span class="api-tag">API</span>
-              <span class="api-name">오우라 연동</span>
-            </div>
-            <div class="saas-api-node" id="swStreamRow3">
-              <span class="api-dot"></span>
-              <span class="api-tag">API</span>
-              <span class="api-name">갤럭시 연동</span>
+            <div class="ed-spec-val">
+              제조사마다 상이한 BLE 통신 패킷과 IMU(가속도·자이로) 쿼터니언을 단일 표준 제스처 데이터로 정규화합니다.
             </div>
           </div>
 
-          <!-- Flow Channels into Engine Core -->
-          <div class="saas-flow-channels" aria-hidden="true">
-            <div class="channel-line ch-1"></div>
-            <div class="channel-line ch-2"></div>
-            <div class="channel-line ch-3"></div>
-          </div>
-
-          <!-- Center: Independent Subscription SaaS Platform & Unified Engine -->
-          <div class="saas-engine-core" id="saasEngineCore">
-            <div class="core-orbit core-orbit-1"></div>
-            <div class="core-orbit core-orbit-2"></div>
-            <div class="core-center-orb">
-              <div class="core-pulse-wave"></div>
-              <div class="core-center-inner"></div>
+          <div class="ed-spec-row" id="swStreamRow2">
+            <div class="ed-spec-key">
+              <span class="ed-device-tag">오우라 연동</span>
+              <span class="ed-tech-name">로컬 가상 HID</span>
             </div>
-            <div class="core-text-block">
-              <span class="core-brand">PERSONALIZER</span>
-              <span class="core-title">통합 엔진</span>
+            <div class="ed-spec-val">
+              클라우드 지연 없이 OS 가상 입력 드라이버로 작동하여, 마우스 상대 좌표와 단축키를 8ms 미만으로 직접 처리합니다.
             </div>
           </div>
 
-          <!-- Unified Output Flow -->
-          <div class="saas-output-flow" aria-hidden="true">
-            <div class="output-beam-line"></div>
-          </div>
-
-          <!-- Right Output Node: Unified Computing Experience -->
-          <div class="saas-output-node" id="saasOutputNode">
-            <div class="output-icon-box">
-              <span class="output-dot"></span>
+          <div class="ed-spec-row" id="swStreamRow3">
+            <div class="ed-spec-key">
+              <span class="ed-device-tag">갤럭시 연동</span>
+              <span class="ed-tech-name">접근성 및 개인화</span>
             </div>
-            <div class="output-text-block">
-              <div class="output-title">컴퓨터 입력 경험</div>
-              <div class="output-sub">표준 컴퓨터 제어 인터페이스</div>
+            <div class="ed-spec-val">
+              관절 가동 범위가 제한적인 사용자를 위해 트리거 임계값, 떨림 보정(Smoothing), 맞춤 단축키를 JSON 파일로 세밀하게 튜닝합니다.
             </div>
           </div>
         </div>
 
-        <!-- Scene Stepper Navigation -->
-        <div class="saas-stepper">
-          <button type="button" class="saas-step-btn active" id="saasStepBtn1" data-scene="1">
-            <span class="step-num">01</span>
-            <span class="step-text">구독형 SaaS</span>
-          </button>
-          <div class="step-wire"></div>
-          <button type="button" class="saas-step-btn" id="saasStepBtn2" data-scene="2">
-            <span class="step-num">02</span>
-            <span class="step-text">서드파티 API</span>
-          </button>
-          <div class="step-wire"></div>
-          <button type="button" class="saas-step-btn" id="saasStepBtn3" data-scene="3">
-            <span class="step-num">03</span>
-            <span class="step-text">데이터 통합</span>
-          </button>
+        <!-- Action Buttons (Sharp 2px corners, orange-red #D9472B button) -->
+        <div class="ed-actions-row">
+          <a href="#install" class="ed-btn-primary">개발자 프리뷰 시작하기</a>
+          <a href="#spec" class="ed-link-secondary">호환 기기 규격 확인 →</a>
         </div>
       </div>
     </div>
