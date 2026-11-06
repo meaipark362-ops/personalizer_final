@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0;background:#08090A">
+<canvas id="c" width="1600" height="400"></canvas>
+<script src="./vendor/three.min.js"></script>
+<script src="./vendor/GLTFLoader.js"></script>
+<script src="./models/hand_data.js"></script>
+<script>
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(1600, 400);
+renderer.setPixelRatio(1);
+renderer.outputEncoding = THREE.sRGBEncoding;
+
+const scene = new THREE.Scene();
+scene.add(new THREE.AmbientLight(0xffeedd, 0.9));
+const dir = new THREE.DirectionalLight(0xffffff, 2.2);
+dir.position.set(1, 2, 2);
+scene.add(dir);
+const rim = new THREE.DirectionalLight(0x99bbff, 1.8);
+rim.position.set(-1, -1, -1);
+scene.add(rim);
+
+const bin = atob(window.HAND_GLB_BASE64);
+const bytes = new Uint8Array(bin.length);
+for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+
+const loader = new THREE.GLTFLoader();
+loader.parse(bytes.buffer, '', (gltf) => {
+  const mesh = gltf.scene.getObjectByProperty('type', 'SkinnedMesh');
+  mesh.material = new THREE.MeshStandardMaterial({
+    color: 0xc69279,
+    roughness: 0.5,
+    metalness: 0.05
+  });
+
+  // Render 4 views side-by-side
+  const angles = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
+  angles.forEach((ry, idx) => {
+    const clone = gltf.scene.clone();
+    clone.rotation.set(Math.PI * 0.95, ry, 0);
+    clone.position.set((idx - 1.5) * 0.22, 0.02, 0);
+    scene.add(clone);
+  });
+
+  const camera = new THREE.PerspectiveCamera(35, 1600/400, 0.05, 5);
+  camera.position.set(0, 0, 0.8);
+  camera.lookAt(0, 0, 0);
+
+  renderer.render(scene, camera);
+});
+</script>
+</body>
+</html>

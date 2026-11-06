@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3BIT3BOARD PERSONALIZER — 투자자 발표</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div id="zenTimer" title="클릭하여 초기화 (R)" role="button" tabindex="0" aria-label="발표 타이머">
+  <span class="zt-dot"></span>
+  <span class="zt-time" id="ztTime">00:00</span>
+  <span class="zt-max">/ 05:00</span>
+</div>
+
+<header id="hud">
+  <a class="wordmark" href="#s0" aria-label="3BIT3BOARD"><img src="logo_3bit3board.png" alt="3BIT3BOARD" class="hud-logo"></a>
+  <nav id="nav" aria-label="챕터 이동"></nav>
+  <div class="tools">
+    <button id="nBtn" title="발표자 노트 (P)">발표 노트</button>
+  </div>
+  <div id="progress"><i></i></div>
+  <div id="planbar"></div>
+</header>
+
+<aside id="notes" hidden aria-label="발표자 노트">
+  <div class="nh"><b id="nTitle"></b><span id="nTime"></span><button id="nClose" aria-label="닫기">✕</button></div>
+  <p id="nText"></p>
+  <small id="nMeta"></small>
+</aside>
+
+<main id="deck">
+
+<section id="s0" class="ch open" data-i="0">
+  <canvas class="ring" data-mode="hero"></canvas>
+  <div class="txt center">
+    <span class="sw-badge reveal">WEARABLE INPUT OS · SOFTWARE PLATFORM</span>
+    <h1 class="reveal brand-logo-wrap"><img src="logo_3bit3board.png" alt="3BIT3BOARD" class="hero-logo"></h1>
+    <h2 class="reveal d1">PERSONALIZER</h2>
+    <p class="reveal d2">스마트 링 제조사가 아닌, 웨어러블 입력의 새로운 표준을 만드는 소프트웨어 플랫폼<br>모든 웨어러블 제스처를 PC 작업 환경과 하나로 연결합니다</p>
+  </div>
+</section>
+
+<section id="s1" class="ch compare-slide" data-i="1">
+  <div class="compare-header">
+    <small class="eyebrow">01 상호작용 · THE WAY WE INTERACT</small>
+  </div>
+  <div class="compare-viewport" id="compareViewport">
+    <!-- Camera rig: slow zoom into typewriter (0-2s) -> pan right with light (2-5s) -> zoom out (5-8s) -> steady rest (8-12s) -->
+    <div class="camera-rig" id="cameraRig">
+      <!-- 1. 19th-Century Mechanical Typewriter (Independent Image 1) -->
+      <div class="device-card item-typewriter" id="itemTypewriter">
+        <div class="device-img-wrap">
+          <img src="typewriter.jpg" alt="19세기 기계식 타자기" class="device-img">
+          <div class="device-vignette"></div>
+        </div>
+        <div class="device-meta">
+          <span class="device-period">1800s</span>
+          <span class="device-name">19세기 기계식 타자기</span>
+        </div>
+      </div>
+
+      <!-- 2. Emerald Light Sweep Effect (2s ~ 5s) -->
+      <div class="emerald-beam" id="emeraldBeam" aria-hidden="true"></div>
+
+      <!-- 3. Timeline Center Connector (5s ~ 8s) -->
+      <div class="timeline-bridge" id="timelineBridge">
+        <span class="tl-node tl-past">1800s</span>
+        <div class="tl-track"><i class="tl-pulse"></i></div>
+        <span class="tl-arrow">→</span>
+        <span class="tl-node tl-now">TODAY</span>
+      </div>
+
+      <!-- 4. Modern Keyboard & Mouse (Independent Image 2) -->
+      <div class="device-card item-modern" id="itemModern">
+        <div class="device-img-wrap">
+          <img src="keyboard_mouse.jpg" alt="현대식 키보드와 마우스" class="device-img">
+          <div class="device-vignette"></div>
+        </div>
+        <div class="device-meta">
+          <span class="device-period">TODAY</span>
+          <span class="device-name">현대식 키보드 &amp; 마우스</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Sequential Typography (8s ~ 12s) -->
+  <div class="evolution-typography" id="evolutionTypography">
+    <p class="evo-line1" id="evoLine1">컴퓨터의 성능은 빠르게 발전했지만,</p>
+    <h2 class="evo-line2" id="evoLine2">컴퓨터를 다루는 방식은 크게 달라지지 않았습니다.</h2>
+  </div>
+</section>
+
+<section id="s2" class="ch product-showcase" data-i="2">
+  <canvas id="canvasProduct" class="product-canvas"></canvas>
+  <div class="product-fade-curtain"></div>
+
+  <!-- Dynamic SVG Data Streams connecting 3D rings to the software platform -->
+  <svg class="ring-connect-svg" id="ringConnectSvg">
+    <defs>
+      <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#F4EDE0" stop-opacity="0.8" />
+        <stop offset="50%" stop-color="#FF6B5B" stop-opacity="0.85" />
+        <stop offset="100%" stop-color="#FF6B5B" stop-opacity="0.15" />
+      </linearGradient>
+    </defs>
+    <!-- Background subtle glow lines -->
+    <path class="stream-line stream-bg line-1" d="M0,0 L0,0" />
+    <path class="stream-line stream-bg line-2" d="M0,0 L0,0" />
+    <path class="stream-line stream-bg line-3" d="M0,0 L0,0" />
+    <!-- Single unified restrained pulse lines -->
+    <path class="stream-line stream-pulse line-1" stroke="url(#streamGrad)" d="M0,0 L0,0" />
+    <path class="stream-line stream-pulse line-2" stroke="url(#streamGrad)" d="M0,0 L0,0" />
+    <path class="stream-line stream-pulse line-3" stroke="url(#streamGrad)" d="M0,0 L0,0" />
+  </svg>
+
+  <div class="product-overlay">
+    <!-- Initial intro copy (centered, visible during 3-ring arrival) -->
+    <div class="product-copy">
+      <small class="eyebrow product-eyebrow">02 제품 소개 · 하드웨어 애그노스틱</small>
+      <h2 class="product-title">
+        <span class="copy-diff">서로 다른 하드웨어.</span>
+        <span class="copy-one">하나의 경험.</span>
+      </h2>
+      <p class="product-sub">웨어러블 입력을 위한 서드파티 소프트웨어 플랫폼</p>
+    </div>
+
+    <!-- Platform Stage (Visible when rings slide left) -->
+    <div class="platform-stage" id="platformStage">
+      <!-- Minimalist Ring Labels positioned directly beneath each 3D ring -->
+      <div class="ring-caption ring-caption-1" id="ringCaption1">미지아 링</div>
+      <div class="ring-caption ring-caption-2" id="ringCaption2">오우라 링</div>
+      <div class="ring-caption ring-caption-3" id="ringCaption3">갤럭시 링</div>
+
+      <!-- Right side: Independent Subscription SaaS Software Platform (NO window chrome) -->
+      <div class="saas-platform-view" id="saasPlatformView">
+        <!-- Brand Signature (Refined, architectural) -->
+        <div class="saas-brand-header">
+          <span class="saas-brand-mark">PERSONALIZER</span>
+          <span class="saas-type-tag">독립형 SaaS 플랫폼</span>
+        </div>
+
+        <!-- Dynamic Narrative Scenes (Scene 1, Scene 2, Scene 3) -->
+        <div class="saas-scenes-viewport">
+          <!-- Scene 1: Independent Subscription Software Service -->
+          <div class="saas-scene saas-scene-1 active" id="saasScene1">
+            <div class="saas-badge-wrap">
+              <span class="saas-badge">구독형 소프트웨어 서비스(SaaS)</span>
+            </div>
+            <h2 class="saas-title">
+              하드웨어가 아닌,<br>
+              <span class="coral-accent">소프트웨어</span>를 제공합니다.
+            </h2>
+          </div>
+
+          <!-- Scene 2: Third-party Hardware Connection -->
+          <div class="saas-scene saas-scene-2" id="saasScene2">
+            <div class="saas-badge-wrap">
+              <span class="saas-badge">서드파티 API 및 연동 기술을 통한 하드웨어 연결</span>
+            </div>
+            <h2 class="saas-title">
+              다양한 제조사의 기기를<br>
+              <span class="coral-accent">하나로.</span>
+            </h2>
+          </div>
+
+          <!-- Scene 3: Heterogeneous Data Integration & Single Experience -->
+          <div class="saas-scene saas-scene-3" id="saasScene3">
+            <div class="saas-badge-wrap">
+              <span class="saas-badge">기기별 센서 데이터와 통신 방식의 차이를 고려한 통합 플랫폼</span>
+            </div>
+            <h2 class="saas-title">
+              기기는 달라도,<br>
+              <span class="coral-accent">사용 경험은 하나로.</span>
+            </h2>
+          </div>
+        </div>
+
+        <!-- SaaS Core Architecture & Data Convergence Diagram -->
+        <div class="saas-arch-diagram" id="saasArchDiagram">
+          <!-- Left: 3 Third-Party Device Ingestion Gateways -->
+          <div class="saas-nodes-col">
+            <div class="saas-api-node" id="swStreamRow1">
+              <span class="api-dot"></span>
+              <span class="api-tag">API</span>
+              <span class="api-name">미지아 연동</span>
+            </div>
+            <div class="saas-api-node" id="swStreamRow2">
+              <span class="api-dot"></span>
+              <span class="api-tag">API</span>
+              <span class="api-name">오우라 연동</span>
+            </div>
+            <div class="saas-api-node" id="swStreamRow3">
+              <span class="api-dot"></span>
+              <span class="api-tag">API</span>
+              <span class="api-name">갤럭시 연동</span>
+            </div>
+          </div>
+
+          <!-- Flow Channels into Engine Core -->
+          <div class="saas-flow-channels" aria-hidden="true">
+            <div class="channel-line ch-1"></div>
+            <div class="channel-line ch-2"></div>
+            <div class="channel-line ch-3"></div>
+          </div>
+
+          <!-- Center: Independent Subscription SaaS Platform & Unified Engine -->
+          <div class="saas-engine-core" id="saasEngineCore">
+            <div class="core-orbit core-orbit-1"></div>
+            <div class="core-orbit core-orbit-2"></div>
+            <div class="core-center-orb">
+              <div class="core-pulse-wave"></div>
+              <div class="core-center-inner"></div>
+            </div>
+            <div class="core-text-block">
+              <span class="core-brand">PERSONALIZER</span>
+              <span class="core-title">통합 엔진</span>
+            </div>
+          </div>
+
+          <!-- Unified Output Flow -->
+          <div class="saas-output-flow" aria-hidden="true">
+            <div class="output-beam-line"></div>
+          </div>
+
+          <!-- Right Output Node: Unified Computing Experience -->
+          <div class="saas-output-node" id="saasOutputNode">
+            <div class="output-icon-box">
+              <span class="output-dot"></span>
+            </div>
+            <div class="output-text-block">
+              <div class="output-title">컴퓨터 입력 경험</div>
+              <div class="output-sub">표준 컴퓨터 제어 인터페이스</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scene Stepper Navigation -->
+        <div class="saas-stepper">
+          <button type="button" class="saas-step-btn active" id="saasStepBtn1" data-scene="1">
+            <span class="step-num">01</span>
+            <span class="step-text">구독형 SaaS</span>
+          </button>
+          <div class="step-wire"></div>
+          <button type="button" class="saas-step-btn" id="saasStepBtn2" data-scene="2">
+            <span class="step-num">02</span>
+            <span class="step-text">서드파티 API</span>
+          </button>
+          <div class="step-wire"></div>
+          <button type="button" class="saas-step-btn" id="saasStepBtn3" data-scene="3">
+            <span class="step-num">03</span>
+            <span class="step-text">데이터 통합</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s3" class="ch demo" data-i="3">
+  <div class="demo-top">
+    <div class="demo-title">
+      <small class="eyebrow">03 소프트웨어 시연</small>
+      <h2 class="mid reveal">PERSONALIZER 소프트웨어가<br>작은 움직임을 PC 명령으로 바꿉니다.</h2>
+    </div>
+    <div class="gesture" aria-live="polite">
+      <small id="gNum">01 / 04</small>
+      <h3 id="gName">MOVE</h3>
+      <p id="gDesc">손의 움직임이 컴퓨터의 포인터로 연결됩니다.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="mac-pane">
+      <div class="mac" id="mac">
+        <div class="screen" id="screen">
+          <div class="menubar">
+            <b>PERSONALIZER</b><span>프로필: 생산성 워크스페이스</span><span>파일</span><span>보기</span><span>윈도우</span>
+            <i class="spacer"></i>
+            <span class="mb-vol" id="mbVol" aria-hidden="true"><u></u><u></u><u></u><u></u></span>
+            <span id="macClock">오전 9:41</span>
+          </div>
+
+          <!-- Finder Window -->
+          <div class="win finder front" id="winFinder">
+            <div class="win-title" data-hit="title"><i class="dots"><u></u><u></u><u></u></i><span>파일 탐색기</span></div>
+            <div class="finder-body">
+              <ul class="side">
+                <li class="head">즐겨찾기</li>
+                <li class="on">문서</li><li>다운로드</li><li>프로젝트</li><li>프레젠테이션</li>
+              </ul>
+              <div class="files">
+                <div class="file" data-hit="file" data-name="사업계획서.pdf"><i></i><span>사업계획서</span></div>
+                <div class="file" data-hit="file" data-name="제스처 설정.json"><i></i><span>제스처 설정</span></div>
+                <div class="file" data-hit="file" data-name="투자자 발표.key"><i></i><span>투자자 발표</span></div>
+                <div class="file" data-hit="file" data-name="프로토타입.mov"><i></i><span>프로토타입</span></div>
+                <div class="file" data-hit="file" data-name="재무 가정.xlsx"><i></i><span>재무 가정</span></div>
+                <div class="file" data-hit="file" data-name="로고.png"><i></i><span>로고</span></div>
+              </div>
+            </div>
+            <div class="finder-bar"><span id="fileStatus">항목 6개 · 준비 완료</span><button type="button" id="openBtn" data-hit="open" tabindex="-1">열기</button></div>
+          </div>
+
+          <!-- Keynote Presentation Window (PINCH Slide Transition) -->
+          <div class="win slide-win" id="winSlide" hidden>
+            <div class="win-title" data-hit="title"><i class="dots"><u data-hit="close"></u><u></u><u></u></i><span>투자자 발표.key — 키노트</span></div>
+            <div class="slide-body" id="slideDeck">
+              <div class="slide-card">
+                <small class="slide-tag">KEYNOTE SLIDE 1/3</small>
+                <h4>3BIT3BOARD PERSONALIZER</h4>
+                <p>The Wearable Input OS</p>
+              </div>
+            </div>
+            <div class="slide-controls">
+              <span id="slideCounter">1 / 3</span>
+              <button type="button" class="slide-next" data-hit="slide-next">다음 슬라이드 ❯</button>
+            </div>
+          </div>
+
+          <!-- Notes App Window -->
+          <div class="win notes-win" id="winNotes" hidden>
+            <div class="win-title" data-hit="title"><i class="dots"><u data-hit="close"></u><u></u><u></u></i><span>메모</span></div>
+            <div class="notes-body">
+              <h5>PERSONALIZER 매핑 로그</h5>
+              <p>· 센서 신호 실시간 해석<br>· 공간 포인터 및 제스처 매핑 지연시간 8ms 이하<br>· 표준 HID 및 주요 생산성 앱 프로필 연동</p>
+            </div>
+          </div>
+
+          <!-- Gesture Mode Status Pill (MOVE Gesture Triggered) -->
+          <div class="gesture-hud" id="gestureHud">
+            <span class="gh-dot"></span>
+            <b id="gestureHudText">제스처 기능 대기</b>
+          </div>
+
+          <!-- AI Assistant HUD (CLICK Ring Press Triggered) -->
+          <div class="ai-assistant" id="aiAssistant">
+            <div class="ai-head">
+              <span class="ai-orb"></span>
+              <div class="ai-titles">
+                <small>PERSONALIZER AI 비서</small>
+                <strong id="aiStateText">반지 클릭 감지 · 음성 비서 호출됨</strong>
+              </div>
+              <div class="ai-waves" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="ai-body" id="aiBodyText">“발표 자료 핵심 요약과 다음 작업 창을 준비할까요?”</div>
+          </div>
+
+          <!-- 3-Function Selector HUD (TWIST Gesture Triggered) -->
+          <div class="app-switcher" id="appSwitcher">
+            <div class="switcher-head">손목 회전(TWIST) 기능 선택</div>
+            <div class="switcher-items">
+              <div class="switcher-item selected" data-app="finder">
+                <div class="switcher-icon">
+                  <svg viewBox="0 0 24 24"><path d="M3 7.5h7l2 2.5h9v8.5H3z"/></svg>
+                </div>
+                <span>파일 탐색</span>
+              </div>
+              <div class="switcher-item" data-app="slide">
+                <div class="switcher-icon">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 20l4-3 4 3"/></svg>
+                </div>
+                <span>발표 제어</span>
+              </div>
+              <div class="switcher-item" data-app="notes">
+                <div class="switcher-icon">
+                  <svg viewBox="0 0 24 24"><path d="M6 4.5h12v15H6zM9 9h6M9 12.5h6M9 16h3.5"/></svg>
+                </div>
+                <span>AI 메모</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dock -->
+          <div class="dock" id="dock">
+            <div class="dock-item open" data-hit="dock" data-app="finder" title="파일 탐색기"><svg viewBox="0 0 24 24"><path d="M3 7.5h7l2 2.5h9v8.5H3z"/></svg></div>
+            <div class="dock-item" data-hit="dock" data-app="slide" title="키노트 프레젠테이션"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 20l4-3 4 3"/></svg></div>
+            <div class="dock-item" data-hit="dock" data-app="notes" title="메모"><svg viewBox="0 0 24 24"><path d="M6 4.5h12v15H6zM9 9h6M9 12.5h6M9 16h3.5"/></svg></div>
+            <div class="dock-item" data-hit="dock" data-app="settings" title="환경 설정"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/></svg></div>
+          </div>
+
+          <div class="screen-dim" id="dim"></div>
+          <div class="toast" id="toast" role="status"></div>
+          <div class="pointer" id="pointer" aria-hidden="true">
+            <i class="ripple"></i>
+            <svg viewBox="0 0 20 24" width="100%" height="100%"><path d="M2 1.5v17l4.3-4 3 6.8 2.7-1.2-3-6.6h6z" fill="#fff" stroke="#16181a" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hand-pane" id="handPane">
+      <canvas id="handCanvas" aria-hidden="true"></canvas>
+    </div>
+  </div>
+
+  <div class="ring2d" id="ring2d" aria-label="2D 스마트 링 그래픽">
+    <i class="halo" id="ringHalo"></i>
+    <svg viewBox="0 0 200 200" aria-hidden="true" id="ringSvg">
+      <defs>
+        <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f4f6f8"/><stop offset=".45" stop-color="#9aa1a9"/><stop offset="1" stop-color="#d9dde2"/>
+        </linearGradient>
+      </defs>
+      <circle cx="100" cy="100" r="74" fill="none" stroke="url(#rg)" stroke-width="8"/>
+      <circle cx="100" cy="100" r="78" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(0,0,0,.6)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="demo-foot">
+    <div id="gTabs" class="gtabs" role="tablist" aria-label="제스처 선택"></div>
+    <div class="gtools">
+      <button type="button" id="replayBtn">▶ 시연 다시 재생</button>
+      <button type="button" id="resetBtn">시연 초기화</button>
+    </div>
+  </div>
+</section>
+
+<section id="s4" class="ch" data-i="4">
+  <div class="split tech">
+    <div class="txt">
+      <small class="eyebrow">04 기술 구조</small>
+      <h2 class="mid reveal">웨어러블과 컴퓨터 사이의<br><span class="dim">단일 소프트웨어 계층</span></h2>
+      <ol class="pipe">
+        <li class="reveal d1">
+          <b>01</b>
+          웨어러블 센서 입력
+          <small>스마트 링의 IMU, 광학 센서, 정전식 터치 및 탭 신호 캡처</small>
+        </li>
+        <li class="reveal d2">
+          <b>02</b>
+          제스처 해석 알고리즘
+          <small>노이즈 필터링 및 4대 제스처(MOVE, CLICK, PINCH, TWIST) 판별</small>
+        </li>
+        <li class="reveal d3">
+          <b>03</b>
+          PERSONALIZER 코어 엔진
+          <small>사용자 맞춤 프로필, 앱별 실행 매크로 및 제스처 매핑 처리</small>
+        </li>
+        <li class="reveal d4">
+          <b>04</b>
+          OS 수준 컴퓨터 동작
+          <small>운영체제 표준 HID 입력 및 승인된 소프트웨어 API 다이렉트 트리거</small>
+        </li>
+      </ol>
+    </div>
+    
+    <div class="txt tiers reveal d2">
+      <small class="eyebrow">하드웨어 호환 등급 · 가격이 아닌 센서 역량 기준</small>
+      <div class="tier">
+        <b>1등급 (Tier 1)</b>
+        <span>다축 IMU 모션, 터치, 클릭 센서를 완전 지원하여 4대 제스처를 모두 사용할 수 있는 기기군</span>
+      </div>
+      <div class="tier">
+        <b>2등급 (Tier 2)</b>
+        <span>기본 모션 추적 및 클릭 센서를 탑재하여 핵심 제스처를 활용할 수 있는 기기군</span>
+      </div>
+      <div class="tier">
+        <b>3등급 (Tier 3)</b>
+        <span>단순 터치나 단일 탭 등 제한적인 입력만 제공하는 기기군</span>
+      </div>
+      <div class="tier-notice">
+        <strong>※ 하드웨어 등급 및 요금제 분리 고지</strong>
+        <p>1·2·3등급은 하드웨어 제조사의 센서 사양에 따른 기술 호환 분류이며, SaaS 구독 요금제(PLUS / PRO)와는 완전히 무관합니다. 특정 기기(예: Mijia Ring)는 초기 호환 테스트 검토 후보일 뿐이며, 운영체제 수준의 HID 매핑 및 실효성은 향후 검증 과제입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s5" class="ch" data-i="5">
+  <div class="split eco">
+    <div class="txt">
+      <small class="eyebrow">05 생태계</small>
+      <h2 class="mid reveal">하나의 기기가 아닌,<br><span class="dim">확장하는 입력 생태계입니다.</span></h2>
+      <ol class="expand">
+        <li class="reveal d1"><b>01. 기기 확장</b>다양한 제조사의 웨어러블 하드웨어 지원 확대</li>
+        <li class="reveal d2"><b>02. 사용자 확장</b>사용자의 신체적 특성과 습관에 맞춘 개인화 제스처 프로필</li>
+        <li class="reveal d3"><b>03. 워크플로 확장</b>개발, 프레젠테이션, 디자인, 미디어 등 전문 작업 환경 지원</li>
+        <li class="reveal d4"><b>04. 소프트웨어 연동</b>운영체제 기본 앱 및 주요 글로벌 생산성 툴과의 심리스 연동</li>
+        <li class="reveal d5"><b>05. 제휴 확장</b>글로벌 웨어러블 제조사 및 소프트웨어 플랫폼과의 협력 모색</li>
+      </ol>
+      <small class="note">※ 파트너십 및 제휴는 향후 가능성을 검토하는 단계이며, 현재 체결된 법적 계약이 아닙니다.</small>
+    </div>
+
+    <div class="net-wrap reveal d2" aria-hidden="true">
+      <div class="net">
+        <svg viewBox="0 0 460 460">
+          <g class="lines">
+            <line x1="230" y1="230" x2="230" y2="50"/>
+            <line x1="230" y1="230" x2="390" y2="135"/>
+            <line x1="230" y1="230" x2="390" y2="325"/>
+            <line x1="230" y1="230" x2="230" y2="410"/>
+            <line x1="230" y1="230" x2="70" y2="325"/>
+            <line x1="230" y1="230" x2="70" y2="135"/>
+          </g>
+        </svg>
+        <div class="node core">PERSONALIZER<small>입력 OS 코어</small></div>
+        <div class="node n1">호환 하드웨어</div>
+        <div class="node n2">사용자 프로필</div>
+        <div class="node n3">워크플로</div>
+        <div class="node n4">소프트웨어 연동</div>
+        <div class="node n5">B2B 파트너십</div>
+        <div class="node n6">차세대 AI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s6" class="ch biz" data-i="6">
+  <div class="txt wide">
+    <small class="eyebrow">06 사업 모델 &amp; 재무 가정 · 하드웨어 제조가 아닌 100% 소프트웨어 SaaS</small>
+    <h2 class="mid reveal">하드웨어 재고 부담 없는 순수 SaaS 구독 비즈니스</h2>
+  </div>
+
+  <div class="bgrid">
+    <div class="col plans reveal d1">
+      <small class="col-head">소프트웨어 구독 요금제 (SaaS) · 무료 플랜 없음</small>
+      <div class="plan">
+        <div class="plan-top">
+          <b>PLUS</b>
+          <span class="plan-badge">스탠다드 소프트웨어 플랜</span>
+        </div>
+        <strong>₩9,000<small> / 월</small></strong>
+        <ul class="plan-features">
+          <li><span class="f-tag now">현재 구현</span> 4대 핵심 제스처(MOVE·CLICK·PINCH·TWIST) OS 매핑</li>
+          <li><span class="f-tag now">현재 구현</span> 기본 PC 제어 및 단일 기기 개인화 프로필</li>
+        </ul>
+      </div>
+      <div class="plan pro">
+        <div class="plan-top">
+          <b>PRO</b>
+          <span class="plan-badge highlight">프로페셔널 &amp; AI 확장 플랜</span>
+        </div>
+        <strong>₩12,000<small> / 월</small></strong>
+        <ul class="plan-features">
+          <li><span class="f-tag now">현재 구현</span> 앱별 맞춤 매크로 · 다중 기기 프로필 클라우드 동기화</li>
+          <li><span class="f-tag next">향후 로드맵</span> AI 에이전트 호출 및 OpenClaw 음성 인터랙션 연동</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col econ reveal d2">
+      <small class="col-head">단위경제 및 손익분기점 (기본 시나리오)</small>
+      <table>
+        <tr><td>월 클라우드 인프라 비용</td><td>₩1.25M</td></tr>
+        <tr><td>월 운영 및 마케팅 고정비</td><td>₩3.75M</td></tr>
+        <tr><td><strong>월 총 고정비</strong></td><td><strong>₩5.00M</strong></td></tr>
+        <tr><td>변동비 가정 (PG 수수료, 트래픽 등)</td><td>매출의 25%</td></tr>
+        <tr><td>평균 구독료 (PLUS:PRO 50:50 가정)</td><td>₩10,500</td></tr>
+        <tr><td><strong>가입자당 월 공헌이익</strong></td><td><strong>₩7,875</strong></td></tr>
+      </table>
+      <div class="bep">
+        <small>운영 손익분기점 (BEP)</small>
+        <strong class="count" data-n="635">≈ 635</strong>
+        <small>유료 구독자 · 월 고정비 ₩5,000,000 ÷ 공헌이익 ₩7,875</small>
+      </div>
+    </div>
+
+    <div class="col goals reveal d3">
+      <small class="col-head">성장 마일스톤 및 3년 차 시나리오</small>
+      <div class="goal">
+        <small>1년 차 목표</small>
+        <strong>5,000명</strong>
+        <span>초기 유료 활성 사용자 확보 (목표)</span>
+      </div>
+      <div class="goal highlight">
+        <small>3년 차 ARR 목표</small>
+        <strong>₩57억</strong>
+        <span>연간 반복 매출 (ARR ₩5.7B)</span>
+        <div class="scenario-box">
+          <div class="scen-item">
+            <b>시나리오 A (100% PRO 요금제)</b>
+            <span>필요 활성 구독자: <strong>39,584명</strong><br><small>(₩5.7B ÷ 연 ₩144,000)</small></span>
+          </div>
+          <div class="scen-item">
+            <b>시나리오 B (PLUS : PRO = 50 : 50)</b>
+            <span>필요 활성 구독자: <strong>45,239명</strong><br><small>(₩5.7B ÷ 연 ₩126,000)</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <small class="foot">※ 모든 재무 지표와 수치는 실제 실적이 아닌 사업계획상 시뮬레이션 가정입니다. 운영 손익분기점은 총 고정비(₩5M) 기준이며 인프라 비용(₩1.25M)만으로 산정한 수치가 아닙니다. 3년 차 필요 구독자 수는 목표 달성을 위한 역산 조건이며 확보된 수치가 아닙니다. CAC, LTV, 이탈률은 상용화 후 실측 데이터를 통해 확정됩니다.</small>
+</section>
+
+<section id="s7" class="ch" data-i="7">
+  <div class="txt wide">
+    <small class="eyebrow">07 미래 로드맵</small>
+    <h2 class="mid reveal">다음 계층은 인공지능(AI)입니다.</h2>
+  </div>
+
+  <div class="phases">
+    <div class="phase reveal d1">
+      <b>1단계</b>
+      <h4>입력 기반 구축</h4>
+      <ul>
+        <li>제스처 기반 단일 입력 소프트웨어 계층 완성</li>
+        <li>운영체제(Windows / Mac) 표준 HID 매핑 검증</li>
+        <li>하드웨어 호환성 및 저지연 센서 알고리즘 최적화</li>
+        <li>PERSONALIZER 코어 앱 론칭</li>
+      </ul>
+    </div>
+    <div class="phase reveal d2">
+      <b>2단계</b>
+      <h4>개인화 생태계</h4>
+      <ul>
+        <li>사용자 맞춤형 프로필 클라우드 동기화</li>
+        <li>고급 커스텀 제스처 및 앱별 워크플로 매크로</li>
+        <li>호환 하드웨어 브랜드 라인업 확대</li>
+        <li>글로벌 하드웨어 제조사 B2B 제휴 기회 타진</li>
+      </ul>
+    </div>
+    <div class="phase reveal d3 highlight-phase">
+      <b>3단계 (향후 비전)</b>
+      <h4>AI &amp; Voice 상호작용</h4>
+      <ul>
+        <li>CLICK 기반 마이크 활성화 및 음성 명령 호출</li>
+        <li>OpenClaw 게이트웨이 기반 지능형 에이전트 연동</li>
+        <li>복합 멀티모달 제스처 기반 워크플로 자동화</li>
+        <li>PRO 플랜 경험의 고도화</li>
+      </ul>
+      
+      <!-- OpenClaw Voice Pipeline Flow -->
+      <div class="openclaw-flow">
+        <small class="flow-title">음성 상호작용 파이프라인 (OpenClaw Voice Flow)</small>
+        <div class="pipeline-track">
+          <span>CLICK 탭</span><i>→</i>
+          <span>로컬 마이크</span><i>→</i>
+          <span>음성 인식</span><i>→</i>
+          <span class="oc-hl">OpenClaw</span><i>→</i>
+          <span>PC 실행</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="sub foot reveal d3">※ AI 및 음성 인터랙션은 향후 로드맵 비전이며, 현재 상용 구현된 기능이 아닙니다.</p>
+</section>
+
+<section id="s8" class="ch open" data-i="8">
+  <div class="txt center">
+    <span class="sw-badge reveal">WEARABLE INPUT STANDARD · SaaS PLATFORM</span>
+    <h1 class="reveal brand-logo-wrap"><img src="logo_3bit3board.png" alt="3BIT3BOARD" class="hero-logo"></h1>
+    <h2 class="reveal d1">웨어러블 입력의 새로운 소프트웨어 표준을 만듭니다.</h2>
+    <p class="reveal d2">하드웨어를 넘어 모든 기기와 앱을 잇는 입력 OS · PERSONALIZER</p>
+  </div>
+</section>
+
+</main>
+<script src="vendor/three.min.js"></script>
+<script src="vendor/GLTFLoader.js"></script>
+<script src="models/hand_data.js"></script>
+<script src="models/ring_data.js"></script>
+<script src="hand.js"></script>
+<script src="demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

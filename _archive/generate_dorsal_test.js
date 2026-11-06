@@ -1,0 +1,67 @@
+const fs = require('fs');
+
+const html = `<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0;background:#08090A">
+<canvas id="c" width="800" height="800"></canvas>
+<script src="./vendor/three.min.js"></script>
+<script src="./vendor/GLTFLoader.js"></script>
+<script src="./models/hand_data.js"></script>
+<script>
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(800, 800);
+renderer.setPixelRatio(1.5);
+renderer.outputEncoding = THREE.sRGBEncoding;
+
+const scene = new THREE.Scene();
+scene.add(new THREE.AmbientLight(0xffeedd, 0.7));
+const dir = new THREE.DirectionalLight(0xffeedd, 2.0);
+dir.position.set(1.5, 2, 2);
+scene.add(dir);
+const rim = new THREE.DirectionalLight(0xaaccff, 2.2);
+rim.position.set(-1.5, 1, -1);
+scene.add(rim);
+
+const bin = atob(window.HAND_GLB_BASE64);
+const bytes = new Uint8Array(bin.length);
+for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+
+const loader = new THREE.GLTFLoader();
+loader.parse(bytes.buffer, '', (gltf) => {
+  const root = gltf.scene;
+  const mesh = root.getObjectByProperty('type', 'SkinnedMesh');
+  mesh.material = new THREE.MeshStandardMaterial({
+    color: 0xc49279,
+    roughness: 0.5,
+    metalness: 0.05
+  });
+
+  const b = {};
+  mesh.skeleton.bones.forEach(bone => b[bone.name] = bone);
+  const ringBone = b['ring-finger-phalanx-proximal'];
+  if (ringBone) {
+    const ringGeo = new THREE.CylinderGeometry(0.0108, 0.0112, 0.008, 32, 1, true);
+    const ringMat = new THREE.MeshStandardMaterial({ color: 0xe0e4e8, metalness: 0.95, roughness: 0.2, side: THREE.DoubleSide });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.position.set(0, -0.018, 0);
+    ringBone.add(ring);
+  }
+
+  // Back of hand facing camera
+  root.position.set(0, 0.04, 0);
+  root.rotation.set(0.1, 1.25, -0.2);
+
+  const camera = new THREE.PerspectiveCamera(36, 1, 0.05, 5);
+  camera.position.set(0, 0, 0.42);
+  camera.lookAt(0, -0.02, 0);
+
+  renderer.render(scene, camera);
+});
+</script>
+</body>
+</html>`;
+
+fs.writeFileSync('c:/Users/meaip/Downloads/PERSONALIZER/test_dorsal.html', html);
+
