@@ -1087,10 +1087,10 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 
 .s4-wrapper {
   width: 100%;
-  max-width: 1480px;
+  max-width: 1640px;
   display: grid;
-  grid-template-columns: clamp(440px, 38vw, 560px) 1fr;
-  gap: clamp(40px, 5.5vw, 80px);
+  grid-template-columns: clamp(480px, 40vw, 620px) 1fr;
+  gap: clamp(48px, 6vw, 96px);
   align-items: center;
 }
 
@@ -1098,7 +1098,7 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .s4-pricing-col {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 24px;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1113,23 +1113,23 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .s4-col-header {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  border-bottom: 2px solid rgba(244, 237, 224, 0.18);
-  padding-bottom: 18px;
+  gap: 12px;
+  border-bottom: 2px solid rgba(244, 237, 224, 0.2);
+  padding-bottom: 20px;
 }
 
 .s4-pricing-title {
-  font-size: clamp(36px, 3.8vw, 54px);
-  font-weight: 800;
+  font-size: clamp(40px, 4.2vw, 60px);
+  font-weight: 900;
   letter-spacing: -0.025em;
-  color: var(--cream);
+  color: #FFFFFF;
   margin: 0;
   line-height: 1.15;
 }
 
 .s4-pricing-sub {
-  font-size: clamp(17px, 1.4vw, 22px);
-  color: rgba(244, 237, 224, 0.75);
+  font-size: clamp(19px, 1.6vw, 25px);
+  color: rgba(244, 237, 224, 0.8);
   margin: 0;
   letter-spacing: 0.01em;
   font-weight: 500;
@@ -1138,23 +1138,23 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .s4-plans {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 .s4-plan-card {
-  padding: clamp(22px, 2.8vh, 32px) clamp(26px, 2.5vw, 34px);
-  background: rgba(244, 237, 224, 0.04);
-  border: 1.5px solid rgba(244, 237, 224, 0.18);
-  border-radius: 8px;
+  padding: clamp(26px, 3vh, 36px) clamp(28px, 2.8vw, 40px);
+  background: rgba(244, 237, 224, 0.05);
+  border: 1.5px solid rgba(244, 237, 224, 0.22);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   transition: border-color 0.3s ease;
 }
 
 .s4-plan-card.s4-plan-pro {
-  border-color: rgba(217, 71, 43, 0.6);
-  background: rgba(217, 71, 43, 0.08);
+  border-color: rgba(217, 71, 43, 0.7);
+  background: rgba(217, 71, 43, 0.09);
 }
 
 .s4-plan-header {
@@ -1164,29 +1164,29 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 }
 
 .s4-plan-tier {
-  font-size: clamp(22px, 2vw, 30px);
-  font-weight: 800;
+  font-size: clamp(26px, 2.4vw, 36px);
+  font-weight: 900;
   letter-spacing: 0.08em;
   color: #FFFFFF;
 }
 
 .s4-plan-tag {
-  font-size: clamp(14px, 1.2vw, 17px);
+  font-size: clamp(15px, 1.3vw, 19px);
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: rgba(244, 237, 224, 0.8);
-  padding: 3px 10px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
+  color: rgba(244, 237, 224, 0.85);
+  padding: 4px 12px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .s4-plan-tag.pro-tag {
   color: var(--coral);
-  background: rgba(217, 71, 43, 0.15);
+  background: rgba(217, 71, 43, 0.18);
 }
 
 .s4-plan-price {
-  font-size: clamp(34px, 3.4vw, 48px);
+  font-size: clamp(40px, 4vw, 54px);
   font-weight: 900;
   color: #FFFFFF;
   letter-spacing: -0.02em;
@@ -1194,9 +1194,9 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 }
 
 .s4-plan-price small {
-  font-size: clamp(16px, 1.35vw, 20px);
+  font-size: clamp(18px, 1.6vw, 24px);
   font-weight: 500;
-  color: rgba(244, 237, 224, 0.65);
+  color: rgba(244, 237, 224, 0.7);
 }
 
 .s4-plan-list {
@@ -1205,15 +1205,15 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   margin: 6px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .s4-plan-list li {
-  font-size: clamp(17px, 1.4vw, 21px);
-  line-height: 1.5;
-  color: rgba(244, 237, 224, 0.9);
+  font-size: clamp(19px, 1.65vw, 24px);
+  line-height: 1.55;
+  color: rgba(244, 237, 224, 0.95);
   position: relative;
-  padding-left: 20px;
+  padding-left: 22px;
   font-weight: 500;
 }
 
@@ -1222,7 +1222,7 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   position: absolute;
   left: 2px;
   color: var(--coral);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 900;
 }
 
@@ -1230,7 +1230,7 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .s4-tiers-col {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   position: relative;
 }
 
@@ -1238,26 +1238,26 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   display: flex;
   align-items: baseline;
   gap: 16px;
-  padding-bottom: 18px;
-  border-bottom: 2px solid rgba(244, 237, 224, 0.18);
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(244, 237, 224, 0.2);
 }
 
 .s4-tiers-header-title {
-  font-size: clamp(30px, 3vw, 44px);
-  font-weight: 800;
+  font-size: clamp(36px, 3.8vw, 52px);
+  font-weight: 900;
   letter-spacing: -0.015em;
   color: #FFFFFF;
 }
 
 .s4-tiers-header-sub {
-  font-size: clamp(15px, 1.25vw, 18px);
-  color: rgba(244, 237, 224, 0.65);
+  font-size: clamp(17px, 1.4vw, 21px);
+  color: rgba(244, 237, 224, 0.7);
 }
 
 .s4-diagram-canvas {
   position: relative;
   width: 100%;
-  height: clamp(440px, 54vh, 540px);
+  height: clamp(480px, 58vh, 580px);
 }
 
 /* SVG Line Animations */
@@ -1380,27 +1380,27 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   display: flex;
   align-items: baseline;
   gap: 16px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .tier-cell-badge {
-  font-size: clamp(24px, 2.2vw, 32px);
+  font-size: clamp(28px, 2.7vw, 40px);
   font-weight: 900;
   letter-spacing: 0.04em;
   color: #FFFFFF;
 }
 
 .tier-cell-sub {
-  font-size: clamp(17px, 1.45vw, 22px);
+  font-size: clamp(20px, 1.8vw, 26px);
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--coral);
 }
 
 .tier-cell-text {
-  font-size: clamp(18px, 1.55vw, 24px);
+  font-size: clamp(21px, 1.85vw, 27px);
   line-height: 1.6;
-  color: rgba(244, 237, 224, 0.92);
+  color: rgba(244, 237, 224, 0.95);
   margin: 0;
   letter-spacing: -0.01em;
   font-weight: 500;
