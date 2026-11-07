@@ -916,170 +916,180 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   opacity: 1;
 }
 
-/* ───────────── Right: Architectural Editorial Panel (No AI Template Clichés) ───────────── */
-.saas-platform-view.editorial-panel {
+/* ───────────── Right: Architectural SaaS Platform View (NO window chrome) ───────────── */
+.saas-platform-view {
   position: absolute;
-  right: clamp(24px, 4vw, 68px);
+  right: clamp(30px, 6vw, 90px);
   top: 50%;
   transform: translateY(-50%) translateX(35px);
-  width: clamp(560px, 48vw, 800px);
-  padding: clamp(32px, 3.8vh, 46px) clamp(32px, 3.6vw, 46px);
-  background-color: #FAF9F6;
-  color: #1A1A18;
-  border: 1px solid #E5E2DC;
-  border-radius: 2px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  width: clamp(480px, 45vw, 680px);
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
   pointer-events: auto;
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: clamp(22px, 3vh, 32px);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
   opacity: 0;
   z-index: 10;
 }
 
-#s2.show-platform .saas-platform-view.editorial-panel {
+#s2.show-platform .saas-platform-view {
   transform: translateY(-50%) translateX(0);
   opacity: 1;
 }
 
-.ed-brand-header {
+/* Brand Signature Header (Clean editorial text, no pill badges) */
+.saas-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(244, 237, 224, 0.14);
+}
+
+.saas-brand-mark {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--cream);
+}
+
+.saas-header-divider {
+  font-size: 13px;
+  color: rgba(244, 237, 224, 0.3);
+}
+
+.saas-category-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(244, 237, 224, 0.55);
+}
+
+/* Main Narrative Headline */
+.saas-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.saas-main-headline {
+  font-size: clamp(36px, 3.8vw, 56px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  margin: 0;
+}
+
+.saas-main-headline .coral-accent {
+  color: var(--coral);
+}
+
+.saas-main-desc {
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.7;
+  color: rgba(244, 237, 224, 0.65);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Hardware Integration Rows (Targets for Three.js SVG stream lines) */
+.saas-device-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.saas-device-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: rgba(244, 237, 224, 0.025);
+  border-left: 2px solid rgba(244, 237, 224, 0.2);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.saas-device-row:hover,
+#s2.saas-focus-api .saas-device-row {
+  border-left-color: var(--coral);
+  background: rgba(217, 71, 43, 0.06);
+}
+
+.row-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  flex-shrink: 0;
+}
+
+.row-info {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  width: 100%;
+  gap: 14px;
 }
 
-.ed-brand-title {
-  font-family: "Noto Serif KR", serif;
-  font-size: 22px;
+.row-title {
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #1A1A18;
+  letter-spacing: 0.01em;
+  color: var(--cream);
 }
 
-.ed-brand-meta {
-  font-size: 13.5px;
-  font-weight: 500;
-  color: #7E7C76;
+.row-desc {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: rgba(244, 237, 224, 0.5);
 }
 
-.ed-accent-divider {
+/* Output Footer (Subtle minimal divider + text) */
+.saas-output-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.output-footer-line {
   width: 100%;
   height: 1px;
-  background: linear-gradient(to right, #D9472B 110px, #E5E2DC 110px);
+  background: rgba(244, 237, 224, 0.12);
 }
 
-.ed-hero-block {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.ed-category-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #7E7C76;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.ed-hero-title {
-  font-family: "Noto Serif KR", serif;
-  font-size: clamp(26px, 2.5vw, 35px);
-  font-weight: 900;
-  line-height: 1.25;
-  letter-spacing: -0.025em;
-  color: #1A1A18;
-  margin: 0;
-}
-
-.ed-hero-desc {
-  font-size: 16px;
-  line-height: 1.7;
-  color: #5C5A55;
-  margin: 0;
-}
-
-.ed-specs-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.ed-spec-row {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 16px;
-  padding: 14px 0;
-  border-top: 1px solid #E5E2DC;
-  align-items: baseline;
-}
-
-.ed-spec-row:last-child {
-  border-bottom: 1px solid #E5E2DC;
-}
-
-.ed-spec-key {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.ed-device-tag {
-  font-size: 11px;
-  font-weight: 700;
-  color: #D9472B;
-  letter-spacing: 0.02em;
-}
-
-.ed-tech-name {
-  font-size: 14.5px;
-  font-weight: 700;
-  color: #1A1A18;
-}
-
-.ed-spec-val {
-  font-size: 14px;
-  line-height: 1.65;
-  color: #5C5A55;
-}
-
-.ed-actions-row {
+.output-footer-text {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding-top: 4px;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(244, 237, 224, 0.6);
 }
 
-.ed-btn-primary {
-  display: inline-block;
-  background-color: #D9472B;
-  color: #FFFFFF;
-  font-size: 14.5px;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 11px 22px;
-  border: 1px solid #D9472B;
-  border-radius: 2px;
-  transition: background-color 0.15s ease;
-}
-
-.ed-btn-primary:hover {
-  background-color: #BF3B21;
-  border-color: #BF3B21;
-}
-
-.ed-link-secondary {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1A1A18;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.ed-link-secondary:hover {
-  color: #D9472B;
+.footer-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--coral);
 }
 
 /* Animations */
