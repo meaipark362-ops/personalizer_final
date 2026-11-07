@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERSONALIZER — 확장 전략</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #E8E5DF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Fixed 16:9, 1920x1080 Container */
+    .slide-canvas {
+      width: 1920px;
+      height: 1080px;
+      background-color: #F5F2EC;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-shrink: 0;
+      padding: 88px 100px 72px 108px;
+    }
+
+    /* Left Column: 45% */
+    .col-left {
+      width: 45%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 64px;
+      z-index: 2;
+    }
+
+    /* Headline Block */
+    .header-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sub-headline {
+      font-family: "Pretendard Variable", Pretendard, sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: #8A867D;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .main-headline {
+      font-family: "Noto Serif KR", serif;
+      font-size: 46px;
+      font-weight: 900;
+      color: #1A1A18;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+    }
+
+    .point-accent {
+      color: #D9472B;
+    }
+
+    /* 5 Expansion Step List */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 24px;
+      border-top: 1px solid #CFCAC0;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      padding: 18px 0;
+      border-bottom: 1px solid #CFCAC0;
+    }
+
+    .step-num {
+      font-size: 14px;
+      font-weight: 600;
+      color: #5C5A55;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #1A1A18;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 18px;
+      font-weight: 400;
+      color: #5C5A55;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    /* Right Column: 55% */
+    .col-right {
+      width: 55%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .concentric-wrapper {
+      position: relative;
+      width: 820px;
+      height: 820px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .concentric-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Ring styling */
+    .ring-line {
+      fill: none;
+      stroke: #CFCAC0;
+      stroke-width: 1px;
+    }
+
+    /* Label mask pill to cleanly break the 1px circle under the label */
+    .label-badge-bg {
+      fill: #F5F2EC;
+    }
+
+    .ring-label-text {
+      font-family: "Pretendard Variable", Pretendard, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      fill: #5C5A55;
+      letter-spacing: 0.02em;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    /* Core Point Circle */
+    .core-circle {
+      fill: #D9472B;
+    }
+
+    .core-text-main {
+      font-family: "Pretendard Variable", Pretendard, sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      fill: #FFFFFF;
+      letter-spacing: 0.08em;
+      text-anchor: middle;
+    }
+
+    .core-text-sub {
+      font-family: "Pretendard Variable", Pretendard, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      fill: rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.02em;
+      text-anchor: middle;
+    }
+
+    /* Bottom Footnote */
+    .slide-footnote {
+      position: absolute;
+      left: 108px;
+      bottom: 40px;
+      font-size: 15px;
+      font-weight: 400;
+      color: #5C5A55;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-canvas" id="slideCanvas">
+    <!-- Left Column (45%) -->
+    <section class="col-left">
+      <div class="header-block">
+        <span class="sub-headline">하나의 기기가 아닌,</span>
+        <h1 class="main-headline"><span class="point-accent">확장</span>하는 입력 생태계입니다.</h1>
+      </div>
+
+      <div class="steps-list">
+        <!-- 01 Core -->
+        <article class="step-item">
+          <span class="step-num">01</span>
+          <h2 class="step-title">PERSONALIZER 입력 OS 코어</h2>
+          <p class="step-desc">다양한 웨어러블의 제스처 신호를 가상 HID 신호로 통합 변환하는 코어 엔진</p>
+        </article>
+
+        <!-- 02 User Profiles -->
+        <article class="step-item">
+          <span class="step-num">02</span>
+          <h2 class="step-title">사용자 프로필</h2>
+          <p class="step-desc">사용자 신체 조건과 관절 가동 범위에 최적화된 맞춤형 제스처 튜닝 및 감도 설정</p>
+        </article>
+
+        <!-- 03 Workflows -->
+        <article class="step-item">
+          <span class="step-num">03</span>
+          <h2 class="step-title">워크플로</h2>
+          <p class="step-desc">개발, 디자인, 프레젠테이션 등 각 전문 작업 환경에 특화된 다이나믹 제어 지원</p>
+        </article>
+
+        <!-- 04 Software Integrations -->
+        <article class="step-item">
+          <span class="step-num">04</span>
+          <h2 class="step-title">소프트웨어 연동</h2>
+          <p class="step-desc">운영체제 기본 제어를 넘어 글로벌 데스크톱 생산성 도구와의 유기적인 매크로 연계</p>
+        </article>
+
+        <!-- 05 Hardware & Partnerships -->
+        <article class="step-item">
+          <span class="step-num">05</span>
+          <h2 class="step-title">하드웨어·제휴</h2>
+          <p class="step-desc">글로벌 스마트링 제조사 및 기업용 엔터프라이즈 솔루션과의 상호 호환 협력 확대</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Right Column (55%): Concentric Circles Diagram -->
+    <section class="col-right">
+      <div class="concentric-wrapper">
+        <svg class="concentric-svg" viewBox="0 0 820 820" preserveAspectRatio="xMidYMid meet">
+          <!-- Center = (410, 410) -->
+
+          <!-- Ring 4: 하드웨어·제휴 (Radius: 370px) -->
+          <circle class="ring-line" cx="410" cy="410" r="370" />
+          <g transform="translate(410, 40)">
+            <rect class="label-badge-bg" x="-74" y="-12" width="148" height="24" rx="2" />
+            <text class="ring-label-text" x="0" y="0">하드웨어·제휴</text>
+          </g>
+
+          <!-- Ring 3: 소프트웨어 연동 (Radius: 285px) -->
+          <circle class="ring-line" cx="410" cy="410" r="285" />
+          <g transform="translate(410, 125)">
+            <rect class="label-badge-bg" x="-80" y="-12" width="160" height="24" rx="2" />
+            <text class="ring-label-text" x="0" y="0">소프트웨어 연동</text>
+          </g>
+
+          <!-- Ring 2: 워크플로 (Radius: 205px) -->
+          <circle class="ring-line" cx="410" cy="410" r="205" />
+          <g transform="translate(410, 205)">
+            <rect class="label-badge-bg" x="-56" y="-12" width="112" height="24" rx="2" />
+            <text class="ring-label-text" x="0" y="0">워크플로</text>
+          </g>
+
+          <!-- Ring 1: 사용자 프로필 (Radius: 130px) -->
+          <circle class="ring-line" cx="410" cy="410" r="130" />
+          <g transform="translate(410, 280)">
+            <rect class="label-badge-bg" x="-68" y="-12" width="136" height="24" rx="2" />
+            <text class="ring-label-text" x="0" y="0">사용자 프로필</text>
+          </g>
+
+          <!-- Core Point Circle: PERSONALIZER 입력 OS 코어 (Radius: 78px, Point Color #D9472B) -->
+          <circle class="core-circle" cx="410" cy="410" r="78" />
+          <!-- Core Text -->
+          <text class="core-text-main" x="410" y="398">PERSONALIZER</text>
+          <text class="core-text-sub" x="410" y="424">입력 OS 코어</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Bottom Footnote -->
+    <footer class="slide-footnote">
+      ※ 파트너십 및 제휴는 향후 가능성을 검토하는 단계이며, 현재 체결된 법적 계약이 아닙니다.
+    </footer>
+  </div>
+
+  <script>
+    // Responsive auto-scaling to fit any display while preserving exact 1920x1080 16:9 layout
+    function resizeSlide() {
+      const canvas = document.getElementById('slideCanvas');
+      const scaleX = window.innerWidth / 1920;
+      const scaleY = window.innerHeight / 1080;
+      const scale = Math.min(scaleX, scaleY);
+      canvas.style.transform = `scale(${scale})`;
+      canvas.style.transformOrigin = 'center center';
+    }
+    window.addEventListener('resize', resizeSlide);
+    resizeSlide();
+  </script>
+</body>
+</html>
