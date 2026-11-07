@@ -122,6 +122,17 @@
       }
     }
 
+    const s4 = $('#s4');
+    if (s4) {
+      if (i === 4) {
+        s4.classList.remove('anim-active');
+        void s4.offsetWidth; // re-trigger animations
+        s4.classList.add('anim-active');
+      } else {
+        s4.classList.remove('anim-active');
+      }
+    }
+
     $('#nTitle').textContent = c.name;
     $('#nTime').textContent = `${mmss(c.start)} – ${mmss(c.end)} · ${c.end - c.start}초`;
     $('#nText').textContent = c.script;

@@ -1074,18 +1074,334 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   opacity: 1;
 }
 
-/* Chapter 04: Technology */
-.pipe{list-style:none;margin-top:28px}
-.pipe li{position:relative;padding:16px 0 16px 54px;font-weight:700;letter-spacing:.02em;font-size:clamp(15px,1.5vw,19px)}
-.pipe li small{display:block;font-weight:400;color:var(--mu);letter-spacing:.01em;margin-top:4px;font-size:12.5px;line-height:1.5}
-.pipe li b{position:absolute;left:0;top:16px;color:var(--mu);font-weight:500;font-size:13px}
-.pipe li:not(:last-child)::after{content:"";position:absolute;left:10px;top:50px;width:1px;height:calc(100% - 30px);background:var(--ln)}
-.tiers{border-left:1px solid var(--ln);padding-left:3.5vw}
-.tier{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--ln);font-size:13.5px;color:var(--si);line-height:1.5}
-.tier b{color:var(--tx);letter-spacing:.02em;font-size:14px}
-.tier-notice{margin-top:22px;padding:16px;background:rgba(20, 33, 61, 0.4);border:1px solid var(--ln);border-radius:8px}
-.tier-notice strong{display:block;font-size:12px;color:var(--cream);margin-bottom:6px}
-.tier-notice p{font-size:11.5px;color:var(--cream-muted);line-height:1.6}
+/* Chapter 04: Software Pricing (Left) & Hardware Tiers with Animated Lines (Right) */
+.s4-tier-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: clamp(24px, 4vh, 48px) clamp(28px, 5vw, 68px);
+  box-sizing: border-box;
+}
+
+.s4-wrapper {
+  width: 100%;
+  max-width: 1320px;
+  display: grid;
+  grid-template-columns: clamp(360px, 32vw, 440px) 1fr;
+  gap: clamp(36px, 5vw, 68px);
+  align-items: center;
+}
+
+/* Left Column: Software Pricing */
+.s4-pricing-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.in .s4-pricing-col,
+#s4.anim-active .s4-pricing-col {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.s4-col-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-bottom: 1px solid rgba(244, 237, 224, 0.12);
+  padding-bottom: 14px;
+}
+
+.s4-pricing-title {
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin: 0;
+}
+
+.s4-pricing-sub {
+  font-size: 13px;
+  color: rgba(244, 237, 224, 0.55);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.s4-plans {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.s4-plan-card {
+  padding: 18px 20px;
+  background: rgba(244, 237, 224, 0.025);
+  border: 1px solid rgba(244, 237, 224, 0.12);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.s4-plan-card.s4-plan-pro {
+  border-color: rgba(217, 71, 43, 0.4);
+  background: rgba(217, 71, 43, 0.04);
+}
+
+.s4-plan-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.s4-plan-tier {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+}
+
+.s4-plan-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(244, 237, 224, 0.6);
+}
+
+.s4-plan-tag.pro-tag {
+  color: var(--coral);
+}
+
+.s4-plan-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+}
+
+.s4-plan-price small {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(244, 237, 224, 0.5);
+}
+
+.s4-plan-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.s4-plan-list li {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(244, 237, 224, 0.7);
+  position: relative;
+  padding-left: 14px;
+}
+
+.s4-plan-list li::before {
+  content: "·";
+  position: absolute;
+  left: 2px;
+  color: var(--coral);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* Right Column: Animated Lines & Tiers */
+.s4-tiers-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.s4-tiers-top {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(244, 237, 224, 0.12);
+}
+
+.s4-tiers-header-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+}
+
+.s4-tiers-header-sub {
+  font-size: 12.5px;
+  color: rgba(244, 237, 224, 0.5);
+}
+
+.s4-diagram-canvas {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 48vh, 460px);
+}
+
+/* SVG Line Animations */
+.s4-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.s4-diag-line {
+  stroke: var(--coral);
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  transition: stroke-dashoffset 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.s4-shelf-line {
+  stroke: rgba(244, 237, 224, 0.28);
+  stroke-width: 1.5px;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  transition: stroke-dashoffset 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.s4-shelf-1 { transition-delay: 0.45s; }
+.s4-shelf-2 { transition-delay: 0.60s; }
+.s4-shelf-3 { transition-delay: 0.75s; }
+
+.s4-shelf-node {
+  fill: var(--coral);
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.s4-node-1 { transition-delay: 0.45s; }
+.s4-node-2 { transition-delay: 0.60s; }
+.s4-node-3 { transition-delay: 0.75s; }
+
+/* Triggers when section becomes active */
+.in .s4-diag-line,
+#s4.anim-active .s4-diag-line {
+  stroke-dashoffset: 0;
+}
+
+.in .s4-shelf-line,
+#s4.anim-active .s4-shelf-line {
+  stroke-dashoffset: 0;
+}
+
+.in .s4-shelf-node,
+#s4.anim-active .s4-shelf-node {
+  opacity: 1;
+}
+
+/* 3 Tier Compartments */
+.s4-tier-compartments {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.s4-tier-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.tier-cell-1 {
+  padding-left: clamp(85px, 14%, 115px);
+  padding-bottom: 12px;
+}
+
+.tier-cell-2 {
+  padding-left: clamp(60px, 10%, 85px);
+  padding-bottom: 12px;
+}
+
+.tier-cell-3 {
+  padding-left: clamp(35px, 6%, 55px);
+  padding-bottom: 12px;
+}
+
+.in .tier-cell-1,
+#s4.anim-active .tier-cell-1 {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.75s;
+}
+
+.in .tier-cell-2,
+#s4.anim-active .tier-cell-2 {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.90s;
+}
+
+.in .tier-cell-3,
+#s4.anim-active .tier-cell-3 {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 1.05s;
+}
+
+.tier-cell-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.tier-cell-badge {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+}
+
+.tier-cell-sub {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--coral);
+}
+
+.tier-cell-text {
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.55;
+  color: rgba(244, 237, 224, 0.72);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.s4-tier-disclaimer {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: rgba(244, 237, 224, 0.45);
+  padding-top: 4px;
+}
 
 /* Chapter 05: Ecosystem (6-Node Network) */
 .expand{list-style:none;margin-top:24px}

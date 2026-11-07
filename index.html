@@ -339,51 +339,111 @@
   </div>
 </section>
 
-<section id="s4" class="ch" data-i="4">
-  <div class="split tech">
-    <div class="txt">
-      <h2 class="mid reveal">웨어러블과 컴퓨터 사이의<br><span class="dim">단일 소프트웨어 계층</span></h2>
-      <ol class="pipe">
-        <li class="reveal d1">
-          <b>01</b>
-          웨어러블 센서 입력
-          <small>스마트 링의 IMU, 광학 센서, 정전식 터치 및 탭 신호 캡처</small>
-        </li>
-        <li class="reveal d2">
-          <b>02</b>
-          제스처 해석 알고리즘
-          <small>노이즈 필터링 및 4대 제스처(MOVE, CLICK, PINCH, TWIST) 판별</small>
-        </li>
-        <li class="reveal d3">
-          <b>03</b>
-          PERSONALIZER 코어 엔진
-          <small>사용자 맞춤 프로필, 앱별 실행 매크로 및 제스처 매핑 처리</small>
-        </li>
-        <li class="reveal d4">
-          <b>04</b>
-          OS 수준 컴퓨터 동작
-          <small>운영체제 표준 HID 입력 및 승인된 소프트웨어 API 다이렉트 트리거</small>
-        </li>
-      </ol>
+<section id="s4" class="ch s4-tier-section" data-i="4">
+  <div class="s4-wrapper">
+    <!-- Left Column: Software Subscription Plans (소프트웨어 요금제) -->
+    <div class="s4-pricing-col">
+      <div class="s4-col-header">
+        <h2 class="s4-pricing-title">소프트웨어 구독 요금제</h2>
+        <p class="s4-pricing-sub">하드웨어와 독립된 100% 순수 SaaS · 무료 플랜 없음</p>
+      </div>
+
+      <div class="s4-plans">
+        <div class="s4-plan-card">
+          <div class="s4-plan-header">
+            <span class="s4-plan-tier">PLUS</span>
+            <span class="s4-plan-tag">스탠다드</span>
+          </div>
+          <div class="s4-plan-price">
+            <strong>₩9,000</strong><small> / 월</small>
+          </div>
+          <ul class="s4-plan-list">
+            <li>4대 핵심 제스처(MOVE·CLICK·PINCH·TWIST) OS 매핑</li>
+            <li>기본 PC 제어 및 단일 기기 개인화 프로필</li>
+          </ul>
+        </div>
+
+        <div class="s4-plan-card s4-plan-pro">
+          <div class="s4-plan-header">
+            <span class="s4-plan-tier">PRO</span>
+            <span class="s4-plan-tag pro-tag">프로페셔널 &amp; AI</span>
+          </div>
+          <div class="s4-plan-price">
+            <strong>₩12,000</strong><small> / 월</small>
+          </div>
+          <ul class="s4-plan-list">
+            <li>앱별 맞춤 매크로 · 다중 기기 프로필 클라우드 동기화</li>
+            <li>AI 에이전트 호출 및 OpenClaw 음성 인터랙션 연동</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    
-    <div class="txt tiers reveal d2">
-      <small class="eyebrow">하드웨어 호환 등급 · 가격이 아닌 센서 역량 기준</small>
-      <div class="tier">
-        <b>1등급 (Tier 1)</b>
-        <span>다축 IMU 모션, 터치, 클릭 센서를 완전 지원하여 4대 제스처를 모두 사용할 수 있는 기기군</span>
+
+    <!-- Right Column: Diagonal line + 3 Horizontal shelf lines + Tier 1/2/3 compartments -->
+    <div class="s4-tiers-col" id="s4TiersCol">
+      <div class="s4-tiers-top">
+        <span class="s4-tiers-header-title">하드웨어 호환 등급</span>
+        <span class="s4-tiers-header-sub">가격이 아닌 센서 역량 기준</span>
       </div>
-      <div class="tier">
-        <b>2등급 (Tier 2)</b>
-        <span>기본 모션 추적 및 클릭 센서를 탑재하여 핵심 제스처를 활용할 수 있는 기기군</span>
+
+      <div class="s4-diagram-canvas" id="s4DiagramCanvas">
+        <!-- SVG lines: 1 diagonal line + 3 horizontal shelf lines -->
+        <svg class="s4-svg" id="s4Svg" viewBox="0 0 700 450" preserveAspectRatio="none">
+          <!-- Main diagonal line -->
+          <line class="s4-diag-line" x1="100" y1="20" x2="20" y2="430" />
+          
+          <!-- Shelf 1 (Horizontal line at y=140 from diagonal x=77 to right x=700) -->
+          <line class="s4-shelf-line s4-shelf-1" x1="77" y1="140" x2="700" y2="140" />
+          <circle class="s4-shelf-node s4-node-1" cx="77" cy="140" r="3.5" />
+
+          <!-- Shelf 2 (Horizontal line at y=280 from diagonal x=49 to right x=700) -->
+          <line class="s4-shelf-line s4-shelf-2" x1="49" y1="280" x2="700" y2="280" />
+          <circle class="s4-shelf-node s4-node-2" cx="49" cy="280" r="3.5" />
+
+          <!-- Shelf 3 (Horizontal line at y=420 from diagonal x=22 to right x=700) -->
+          <line class="s4-shelf-line s4-shelf-3" x1="22" y1="420" x2="700" y2="420" />
+          <circle class="s4-shelf-node s4-node-3" cx="22" cy="420" r="3.5" />
+        </svg>
+
+        <!-- 3 Tier Compartments nestled directly above each shelf line -->
+        <div class="s4-tier-compartments">
+          <!-- Compartment 1 (Tier 1) -->
+          <div class="s4-tier-cell tier-cell-1">
+            <div class="tier-cell-heading">
+              <span class="tier-cell-badge">1등급</span>
+              <span class="tier-cell-sub">Tier 1 · 풀 제스처 지원</span>
+            </div>
+            <p class="tier-cell-text">
+              다축 IMU 모션, 터치, 클릭 센서를 완전 지원하여 4대 제스처를 모두 사용할 수 있는 기기군
+            </p>
+          </div>
+
+          <!-- Compartment 2 (Tier 2) -->
+          <div class="s4-tier-cell tier-cell-2">
+            <div class="tier-cell-heading">
+              <span class="tier-cell-badge">2등급</span>
+              <span class="tier-cell-sub">Tier 2 · 핵심 제스처 지원</span>
+            </div>
+            <p class="tier-cell-text">
+              기본 모션 추적 및 클릭 센서를 탑재하여 핵심 제스처를 활용할 수 있는 기기군
+            </p>
+          </div>
+
+          <!-- Compartment 3 (Tier 3) -->
+          <div class="s4-tier-cell tier-cell-3">
+            <div class="tier-cell-heading">
+              <span class="tier-cell-badge">3등급</span>
+              <span class="tier-cell-sub">Tier 3 · 기본 입력</span>
+            </div>
+            <p class="tier-cell-text">
+              단순 터치나 단일 탭 등 제한적인 입력만 제공하는 기기군
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="tier">
-        <b>3등급 (Tier 3)</b>
-        <span>단순 터치나 단일 탭 등 제한적인 입력만 제공하는 기기군</span>
-      </div>
-      <div class="tier-notice">
-        <strong>※ 하드웨어 등급 및 요금제 분리 고지</strong>
-        <p>1·2·3등급은 하드웨어 제조사의 센서 사양에 따른 기술 호환 분류이며, SaaS 구독 요금제(PLUS / PRO)와는 완전히 무관합니다. 특정 기기(예: Mijia Ring)는 초기 호환 테스트 검토 후보일 뿐이며, 운영체제 수준의 HID 매핑 및 실효성은 향후 검증 과제입니다.</p>
+
+      <div class="s4-tier-disclaimer">
+        ※ 1·2·3등급은 하드웨어 센서 사양에 따른 기술 호환 분류이며, SaaS 구독 요금제(PLUS / PRO)와는 완전히 무관합니다.
       </div>
     </div>
   </div>
