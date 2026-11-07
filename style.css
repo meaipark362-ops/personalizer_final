@@ -1087,9 +1087,9 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 
 .s4-wrapper {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1400px;
   display: grid;
-  grid-template-columns: clamp(360px, 32vw, 440px) 1fr;
+  grid-template-columns: clamp(400px, 36vw, 500px) 1fr;
   gap: clamp(36px, 5vw, 68px);
   align-items: center;
 }
@@ -1098,7 +1098,7 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .s4-pricing-col {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1113,22 +1113,23 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .s4-col-header {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  border-bottom: 1px solid rgba(244, 237, 224, 0.12);
-  padding-bottom: 14px;
+  gap: 8px;
+  border-bottom: 1px solid rgba(244, 237, 224, 0.16);
+  padding-bottom: 16px;
 }
 
 .s4-pricing-title {
-  font-size: clamp(24px, 2.5vw, 34px);
+  font-size: clamp(30px, 3.2vw, 44px);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--cream);
   margin: 0;
+  line-height: 1.2;
 }
 
 .s4-pricing-sub {
-  font-size: 13px;
-  color: rgba(244, 237, 224, 0.55);
+  font-size: clamp(14.5px, 1.2vw, 17.5px);
+  color: rgba(244, 237, 224, 0.65);
   margin: 0;
   letter-spacing: 0.01em;
 }
@@ -1136,23 +1137,23 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .s4-plans {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .s4-plan-card {
-  padding: 18px 20px;
-  background: rgba(244, 237, 224, 0.025);
-  border: 1px solid rgba(244, 237, 224, 0.12);
-  border-radius: 4px;
+  padding: clamp(20px, 2.4vh, 26px) clamp(22px, 2.2vw, 28px);
+  background: rgba(244, 237, 224, 0.03);
+  border: 1px solid rgba(244, 237, 224, 0.16);
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   transition: border-color 0.3s ease;
 }
 
 .s4-plan-card.s4-plan-pro {
-  border-color: rgba(217, 71, 43, 0.4);
-  background: rgba(217, 71, 43, 0.04);
+  border-color: rgba(217, 71, 43, 0.5);
+  background: rgba(217, 71, 43, 0.06);
 }
 
 .s4-plan-header {
@@ -1162,17 +1163,17 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 }
 
 .s4-plan-tier {
-  font-size: 16px;
+  font-size: clamp(18px, 1.6vw, 24px);
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--cream);
 }
 
 .s4-plan-tag {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: clamp(12.5px, 1.05vw, 15px);
+  font-weight: 700;
   letter-spacing: 0.05em;
-  color: rgba(244, 237, 224, 0.6);
+  color: rgba(244, 237, 224, 0.7);
 }
 
 .s4-plan-tag.pro-tag {
@@ -1180,16 +1181,16 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 }
 
 .s4-plan-price {
-  font-size: 24px;
+  font-size: clamp(28px, 2.8vw, 38px);
   font-weight: 800;
   color: var(--cream);
   letter-spacing: -0.02em;
 }
 
 .s4-plan-price small {
-  font-size: 12px;
+  font-size: clamp(14px, 1.2vw, 17px);
   font-weight: 500;
-  color: rgba(244, 237, 224, 0.5);
+  color: rgba(244, 237, 224, 0.55);
 }
 
 .s4-plan-list {
@@ -1198,15 +1199,15 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   margin: 4px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .s4-plan-list li {
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: rgba(244, 237, 224, 0.7);
+  font-size: clamp(14.5px, 1.2vw, 17.5px);
+  line-height: 1.5;
+  color: rgba(244, 237, 224, 0.82);
   position: relative;
-  padding-left: 14px;
+  padding-left: 16px;
 }
 
 .s4-plan-list li::before {
@@ -1214,7 +1215,7 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   position: absolute;
   left: 2px;
   color: var(--coral);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 800;
 }
 
@@ -1230,26 +1231,26 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
   display: flex;
   align-items: baseline;
   gap: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(244, 237, 224, 0.12);
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(244, 237, 224, 0.16);
 }
 
 .s4-tiers-header-title {
-  font-size: 18px;
+  font-size: clamp(24px, 2.4vw, 36px);
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--cream);
 }
 
 .s4-tiers-header-sub {
-  font-size: 12.5px;
-  color: rgba(244, 237, 224, 0.5);
+  font-size: clamp(13px, 1.1vw, 15px);
+  color: rgba(244, 237, 224, 0.55);
 }
 
 .s4-diagram-canvas {
   position: relative;
   width: 100%;
-  height: clamp(380px, 48vh, 460px);
+  height: clamp(400px, 50vh, 490px);
 }
 
 /* SVG Line Animations */
@@ -1371,27 +1372,28 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .tier-cell-heading {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 14px;
+  margin-bottom: 2px;
 }
 
 .tier-cell-badge {
-  font-size: 15px;
+  font-size: clamp(20px, 1.8vw, 26px);
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: var(--cream);
+  color: #FFFFFF;
 }
 
 .tier-cell-sub {
-  font-size: 12.5px;
-  font-weight: 600;
+  font-size: clamp(15px, 1.3vw, 19px);
+  font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--coral);
 }
 
 .tier-cell-text {
-  font-size: clamp(13px, 1.05vw, 15px);
-  line-height: 1.55;
-  color: rgba(244, 237, 224, 0.72);
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.6;
+  color: rgba(244, 237, 224, 0.85);
   margin: 0;
   letter-spacing: -0.01em;
 }
