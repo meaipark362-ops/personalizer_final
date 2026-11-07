@@ -133,6 +133,11 @@
       }
     }
 
+    const s8 = $('#s8');
+    if (s8 && i !== LAST) {
+      s8.classList.remove('show-punchline');
+    }
+
     $('#nTitle').textContent = c.name;
     $('#nTime').textContent = `${mmss(c.start)} – ${mmss(c.end)} · ${c.end - c.start}초`;
     $('#nText').textContent = c.script;
@@ -274,6 +279,12 @@
     } else if (onProduct && window.Demo) {
       // Demo screen: 4 SPACE / Clicks run MOVE -> PINCH -> CLICK -> TWIST; 5th moves to next chapter
       if (!window.Demo.next(false)) goTo(state.chapter + 1);
+    } else if (state.chapter === LAST) {
+      // Closing Chapter 8: 1st SPACE / Click reveals the punchline between lead and sub
+      const s8 = $('#s8');
+      if (s8 && !s8.classList.contains('show-punchline')) {
+        s8.classList.add('show-punchline');
+      }
     } else {
       // Advance chapters anywhere on the site
       clearTimeout(state.introTimer);
@@ -307,6 +318,19 @@
       if (curSaasScene > 1) {
         setSaasScene(curSaasScene - 1, true);
         e.preventDefault();
+      }
+    } else if (state.chapter === LAST && (k === 'ArrowRight' || k === 'ArrowDown')) {
+      const s8 = $('#s8');
+      if (s8 && !s8.classList.contains('show-punchline')) {
+        s8.classList.add('show-punchline');
+        e.preventDefault();
+      }
+    } else if (state.chapter === LAST && (k === 'ArrowLeft' || k === 'ArrowUp')) {
+      const s8 = $('#s8');
+      if (s8 && s8.classList.contains('show-punchline')) {
+        s8.classList.remove('show-punchline');
+        e.preventDefault();
+        return;
       }
     } else if (onProduct && (k === 'ArrowRight' || k === 'ArrowLeft') && window.Demo && window.Demo.step(k === 'ArrowRight' ? 1 : -1)) {
       e.preventDefault();

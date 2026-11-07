@@ -1524,6 +1524,65 @@ td:last-child{text-align:right;color:var(--cream);font-variant-numeric:tabular-n
 #nText{font-size:15px;line-height:1.75;color:var(--tx)}
 #nMeta{display:block;margin-top:12px;color:var(--mu);font-size:11px}
 
+/* Chapter 08: Closing Punchline Reveal */
+.closing-txt-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.closing-lead {
+  font-size: clamp(28px, 4.2vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin: 18px 0 0;
+  line-height: 1.25;
+}
+
+.closing-reveal-box {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-8px);
+  transition: max-height 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 0;
+}
+
+.closing-punchline {
+  font-size: clamp(24px, 3.8vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  line-height: 1.28;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.closing-punchline .coral-accent {
+  color: var(--coral);
+}
+
+.closing-sub {
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+  margin-top: 18px;
+}
+
+#s8.show-punchline .closing-reveal-box {
+  max-height: 140px;
+  opacity: 1;
+  transform: translateY(0);
+  margin: 18px 0 6px;
+}
+
+#s8.show-punchline .closing-sub {
+  transform: translateY(16px);
+}
+
 /* Transitions & Animation */
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .in .reveal,.open .reveal{opacity:1;transform:none}
