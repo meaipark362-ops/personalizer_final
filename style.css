@@ -1428,110 +1428,181 @@ h1{font-size:clamp(36px,7vw,104px);font-weight:800;letter-spacing:.06em;line-hei
 .in .net .n5{opacity:1;transition-delay:.8s}
 .in .net .n6{opacity:1;transition-delay:.95s}
 
-/* Chapter 06: Business Model & Market Sizing */
-.biz{justify-content:center}
-.bgrid{display:grid;grid-template-columns:1.05fr 1.15fr 1fr;gap:2.2vw;margin-top:22px}
-.bgrid .col{border-top:1px solid rgba(244, 237, 224, 0.14);padding-top:16px}
-.col-head{display:block;font-size:14px;font-weight:600;letter-spacing:.06em;color:var(--cream-soft);margin-bottom:16px;text-transform:uppercase}
-
-/* Market Size Card (TAM / SAM / SOM) matching image */
-.market-card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background: rgba(9, 14, 26, 0.8);
-  border: 1px solid rgba(244, 237, 224, 0.12);
-  border-radius: 12px;
-  padding: 18px 20px;
-  backdrop-filter: blur(8px);
+/* Chapter 06: Business Model & Market Sizing Slider */
+#s6.biz {
+  padding: 0;
+  overflow: hidden;
+  justify-content: flex-start;
+  width: 100vw;
+  height: 100vh;
 }
 
-.market-block {
+.biz-slider-track {
+  display: flex;
+  width: 200vw;
+  height: 100vh;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.biz-pane {
+  width: 100vw;
+  flex: 0 0 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: clamp(24px, 4vh, 48px) var(--pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* Stepped Market Cards (TAM / SAM / SOM) matching image */
+.tam-stepped-wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin-top: clamp(16px, 2.5vh, 28px);
+  display: flex;
+  flex-direction: column;
+}
+
+.tam-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 2.2vh, 24px) clamp(20px, 2.6vw, 36px);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tam-card-1 {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(16, 36, 68, 0.95) 0%, rgba(10, 22, 44, 0.95) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+}
+
+.tam-card-2 {
+  width: 82%;
+  background: linear-gradient(135deg, rgba(14, 56, 46, 0.95) 0%, rgba(9, 38, 31, 0.95) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+}
+
+.tam-card-3 {
+  width: 64%;
+  background: linear-gradient(135deg, rgba(63, 32, 36, 0.95) 0%, rgba(42, 20, 23, 0.95) 100%);
+  border: 1px solid rgba(244, 93, 72, 0.28);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+}
+
+.tam-arrow {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  color: rgba(244, 237, 224, 0.45);
+}
+
+.tam-arrow-1 {
+  justify-content: flex-end;
+  padding-right: clamp(24px, 3.2vw, 44px);
+}
+
+.tam-arrow-2 {
+  width: 82%;
+  justify-content: flex-end;
+  padding-right: clamp(24px, 3.2vw, 44px);
+  box-sizing: border-box;
+}
+
+.tam-card-left {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.market-label {
-  font-size: 13.5px;
-  font-weight: 500;
-  color: rgba(244, 237, 224, 0.7);
-  letter-spacing: -0.01em;
+.tam-badge {
+  align-self: flex-start;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-bottom: 3px;
 }
 
-.market-val {
-  font-size: clamp(24px, 2.4vw, 32px);
+.tam-badge-blue {
+  background: rgba(59, 130, 246, 0.16);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.tam-badge-green {
+  background: rgba(16, 185, 129, 0.16);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.tam-badge-coral {
+  background: rgba(244, 93, 72, 0.16);
+  color: #f87171;
+  border: 1px solid rgba(244, 93, 72, 0.35);
+}
+
+.tam-title {
+  font-size: clamp(20px, 2.2vw, 27px);
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.015em;
 }
 
-.market-val.tam-val {
-  color: #3B82F6;
-  text-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
-}
-
-.market-val.sam-val {
-  color: #05D6A0;
-  text-shadow: 0 0 16px rgba(5, 214, 160, 0.35);
-}
-
-.market-val.som-val {
-  color: #FF5C48;
-  text-shadow: 0 0 16px rgba(255, 92, 72, 0.35);
-}
-
-.market-desc {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--cream);
-  line-height: 1.4;
+.tam-sub {
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: rgba(244, 237, 224, 0.65);
   margin: 0;
 }
 
-.market-bar-track {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-top: 4px;
+.tam-card-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 24px;
 }
 
-.market-bar-fill {
-  height: 100%;
-  width: 0%;
-  border-radius: 999px;
-  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+.tam-amount {
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.market-bar-fill.tam-fill {
-  background: #3B82F6;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.45);
+/* 2-Column Business Dashboard (Pane 2) matching image 2 */
+.bgrid-two-col {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(24px, 3.5vw, 52px);
+  margin-top: clamp(16px, 2.4vh, 26px);
 }
 
-.market-bar-fill.sam-fill {
-  background: #05D6A0;
-  box-shadow: 0 0 12px rgba(5, 214, 160, 0.45);
+.bgrid-two-col .col {
+  border-top: 1px solid rgba(244, 237, 224, 0.14);
+  padding-top: 16px;
 }
 
-.in .market-bar-fill,
-#s6.anim-active .market-bar-fill {
-  width: var(--mbar-w, 100%);
-}
-
-.in .market-bar-fill.tam-fill {
-  transition-delay: 0.2s;
-}
-
-.in .market-bar-fill.sam-fill {
-  transition-delay: 0.4s;
-}
-
-.market-sub {
-  font-size: 13.5px;
-  color: rgba(244, 237, 224, 0.55);
-  margin-top: 2px;
+.col-head {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--cream-soft);
+  margin-bottom: 16px;
+  text-transform: uppercase;
 }
 
 table{width:100%;border-collapse:collapse;font-size:15px}

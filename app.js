@@ -135,6 +135,11 @@
       }
     }
 
+    if (i !== 6) {
+      bizStage = 0;
+      updateBizSlider(false);
+    }
+
     const s8 = $('#s8');
     if (s8 && i !== LAST) {
       s8.classList.remove('show-punchline');
@@ -146,11 +151,29 @@
     $('#nMeta').textContent = `공백 제외 ${c.script.replace(/\s/g, '').length}자 · 목표 ${c.end - c.start}초`;
   }
 
+  let bizStage = 0; // 0: TAM/SAM/SOM stepped view, 1: Unit Economics & Milestones view
+  function updateBizSlider(animate = true) {
+    const track = document.getElementById('bizSliderTrack');
+    if (!track) return;
+    if (!animate) {
+      track.style.transition = 'none';
+      track.style.transform = bizStage === 1 ? 'translateX(-100vw)' : 'translateX(0)';
+      void track.offsetWidth;
+      track.style.transition = '';
+    } else {
+      track.style.transform = bizStage === 1 ? 'translateX(-100vw)' : 'translateX(0)';
+    }
+    if (bizStage === 1) {
+      countUpBep(true);
+    }
+  }
+
   let bepCounted = false;
-  function countUpBep() {
-    if (bepCounted || REDUCED_MOTION) return;
+  function countUpBep(force = false) {
+    if ((bepCounted && !force) || REDUCED_MOTION) return;
     bepCounted = true;
     const el = $('.count');
+    if (!el) return;
     let t0 = null;
     const step = (t) => {
       t0 ??= t;
@@ -281,6 +304,15 @@
     } else if (onProduct && window.Demo) {
       // Demo screen: 4 SPACE / Clicks run MOVE -> PINCH -> CLICK -> TWIST; 5th moves to next chapter
       if (!window.Demo.next(false)) goTo(state.chapter + 1);
+    } else if (state.chapter === 6) {
+      // Chapter 06: 1st Down Arrow slides sideways to Unit Economics & Milestones; 2nd advances to Funding Slide
+      if (bizStage === 0) {
+        bizStage = 1;
+        updateBizSlider(true);
+      } else {
+        clearTimeout(state.introTimer);
+        goTo(state.chapter + 1);
+      }
     } else if (state.chapter === LAST) {
       // Closing Chapter 8: 1st SPACE / Click reveals the punchline between lead and sub
       const s8 = $('#s8');
@@ -322,6 +354,12 @@
 
     // Up Arrow (and PageUp / ArrowLeft) go to previous step / chapter
     if (k === 'ArrowUp' || k === 'PageUp' || k === 'ArrowLeft') {
+      if (state.chapter === 6 && bizStage === 1) {
+        bizStage = 0;
+        updateBizSlider(true);
+        e.preventDefault();
+        return;
+      }
       if (state.chapter === LAST) {
         const s8 = $('#s8');
         if (s8 && s8.classList.contains('show-punchline')) {
