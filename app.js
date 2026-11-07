@@ -295,7 +295,7 @@
 
   /* ───────────── Keyboard & Mouse Controls ───────────── */
 
-  const NEXT_KEYS = ['ArrowDown', 'ArrowRight', 'PageDown', ' '];
+  const NEXT_KEYS = ['ArrowDown', 'ArrowRight', 'PageDown'];
   const PREV_KEYS = ['ArrowUp', 'ArrowLeft', 'PageUp'];
 
   addEventListener('keydown', (e) => {
@@ -305,42 +305,46 @@
     const inControl = e.target.closest && e.target.closest('button, input, textarea, select');
     if (inControl && (k === ' ' || k === 'Enter')) return;
 
+    // Prevent default scrolling on spacebar, but do not advance (operated via Down Arrow)
     if (k === ' ') {
+      e.preventDefault();
+      return;
+    }
+
+    // Down Arrow (and PageDown / ArrowRight) advance presentation step-by-step
+    if (k === 'ArrowDown' || k === 'PageDown' || k === 'ArrowRight') {
       advancePresentation();
       e.preventDefault();
       return;
-    } else if (state.chapter === 2 && (k === 'ArrowRight' || k === 'ArrowDown')) {
-      if (curSaasScene < 3) {
-        setSaasScene(curSaasScene + 1, true);
-        e.preventDefault();
+    }
+
+    // Up Arrow (and PageUp / ArrowLeft) go to previous step / chapter
+    if (k === 'ArrowUp' || k === 'PageUp' || k === 'ArrowLeft') {
+      if (state.chapter === LAST) {
+        const s8 = $('#s8');
+        if (s8 && s8.classList.contains('show-punchline')) {
+          s8.classList.remove('show-punchline');
+          e.preventDefault();
+          return;
+        }
       }
-    } else if (state.chapter === 2 && (k === 'ArrowLeft' || k === 'ArrowUp')) {
-      if (curSaasScene > 1) {
-        setSaasScene(curSaasScene - 1, true);
-        e.preventDefault();
+      if (state.chapter === 2) {
+        if (curSaasScene > 1) {
+          setSaasScene(curSaasScene - 1, true);
+          e.preventDefault();
+          return;
+        }
       }
-    } else if (state.chapter === LAST && (k === 'ArrowRight' || k === 'ArrowDown')) {
-      const s8 = $('#s8');
-      if (s8 && !s8.classList.contains('show-punchline')) {
-        s8.classList.add('show-punchline');
-        e.preventDefault();
-      }
-    } else if (state.chapter === LAST && (k === 'ArrowLeft' || k === 'ArrowUp')) {
-      const s8 = $('#s8');
-      if (s8 && s8.classList.contains('show-punchline')) {
-        s8.classList.remove('show-punchline');
+      if (onProduct && window.Demo && window.Demo.step(-1)) {
         e.preventDefault();
         return;
       }
-    } else if (onProduct && (k === 'ArrowRight' || k === 'ArrowLeft') && window.Demo && window.Demo.step(k === 'ArrowRight' ? 1 : -1)) {
-      e.preventDefault();
-    } else if (NEXT_KEYS.includes(k)) {
-      goTo(state.chapter + 1);
-      e.preventDefault();
-    } else if (PREV_KEYS.includes(k)) {
       goTo(state.chapter - 1);
       e.preventDefault();
-    } else if (k === 'Home') goTo(0);
+      return;
+    }
+
+    if (k === 'Home') goTo(0);
     else if (k === 'End') goTo(LAST);
     else if (k === 'p' || k === 'P') toggleNotes();
     else if (k === 't' || k === 'T') toggleTimer();
