@@ -16,8 +16,9 @@
     { name: '생태계', start: 160, end: 200, script: '우리는 특정 링 제조에 종속되지 않습니다. 호환 기기, 퍼스널라이저, 워크플로를 소프트웨어로 연결합니다. 확장은 네 방향입니다. 호환 기기 확대, 사용자별 제스처 프로필, 다양한 작업 환경, 그리고 제조사와 소프트웨어 기업과의 협력 가능성 모색입니다. 아직 체결된 제휴는 없습니다.' },
     { name: '사업 모델', start: 200, end: 240, script: '사업 모델은 소프트웨어 구독입니다. 무료 요금제 없이 Plus 월 9천 원, Pro 월 1만 2천 원 두 가지입니다. 기본 시나리오는 Plus와 Pro가 50대 50이라는 가정입니다. 평균 구독료는 1만 500원, 변동비 25%를 빼면 가입자당 월 공헌이익은 7,875원입니다. 월 고정비 410만 원을 나누면 운영 손익분기점은 약 520명입니다. 인프라 비용 40K만의 기준이 아니라 전체 고정비 기준입니다. 목표는 2년 차 유료 사용자 3천 명, 4년 차 ARR 10억 8천만 원이며, 시나리오 A(100% PLUS) 기준 1만 명, 시나리오 B(50:50) 기준 약 8천572명의 활성 구독자가 필요합니다. 모두 실적이 아닌 사업계획상의 가정입니다.' },
     { name: '투자 유치', start: 240, end: 265, script: '초기 투자유치 목표는 2억 원입니다. 약 12개월의 사업화 계획을 바탕으로 제품 개발 및 소프트웨어 고도화에 35%인 7천만 원, 인프라·운영·마케팅에 30%인 6천만 원, 사용자 테스트 및 시장 검증에 12.5%인 2천500만 원, 기기 호환성 및 기술 검증에 10%인 2천만 원, 예비비 7.5%인 1천500만 원, 지식재산권 및 법률 대응에 5%인 1천만 원을 집행할 계획입니다.' },
-    { name: '미래 로드맵', start: 265, end: 290, script: '로드맵은 세 단계입니다. 첫째, 입력 기반 구축. 제스처 입력과 PC 매핑, 하드웨어 호환성을 검증합니다. 둘째, 개인화 생태계. 사용자 프로필과 고급 커스터마이징, 기기 확대를 추진합니다. 셋째, AI 인터랙션. 클릭으로 음성을 호출하고 AI 에이전트와 연동하는 방향입니다. AI는 현재 기능이 아니라 다음 단계의 확장 동력입니다.' },
-    { name: '클로징', start: 290, end: 300, script: '웨어러블 입력을 소프트웨어 계층으로. 3BIT3BOARD, 컴퓨팅의 새로운 계층입니다.' },
+    { name: '미래 로드맵', start: 265, end: 285, script: '로드맵은 세 단계입니다. 첫째, 입력 기반 구축. 제스처 입력과 PC 매핑, 하드웨어 호환성을 검증합니다. 둘째, 개인화 생태계. 사용자 프로필과 고급 커스터마이징, 기기 확대를 추진합니다. 셋째, AI 인터랙션. 클릭으로 음성을 호출하고 AI 에이전트와 연동하는 방향입니다. AI는 현재 기능이 아니라 다음 단계의 확장 동력입니다.' },
+    { name: '클로징', start: 285, end: 295, script: '웨어러블 입력을 소프트웨어 계층으로. 3BIT3BOARD, 컴퓨팅의 새로운 계층입니다.' },
+    { name: 'Q&A', start: 295, end: 300, script: '이상으로 발표를 마칩니다. 질문과 답변 시간입니다. 경청해 주셔서 감사합니다.' },
   ];
   const LAST = CHAPTERS.length - 1;
   const PRODUCT_CHAPTER = 3;
@@ -91,7 +92,8 @@
       ['50%', '25%', '0.07'],
       ['45%', '55%', '0.09'], // Investment & Funding
       ['76%', '62%', '0.09'],
-      ['50%', '30%', '0.13'],
+      ['50%', '30%', '0.13'], // Closing
+      ['50%', '50%', '0.15'], // Q&A
     ];
     const [ax, ay, aop] = ambPositions[i] || ambPositions[0];
     document.documentElement.style.setProperty('--amb-x', ax);
@@ -313,12 +315,18 @@
         clearTimeout(state.introTimer);
         goTo(state.chapter + 1);
       }
-    } else if (state.chapter === LAST) {
-      // Closing Chapter 8: 1st SPACE / Click reveals the punchline between lead and sub
+    } else if (state.chapter === 9) { // Chapter 08: Closing
+      // 1st Down Arrow / Click reveals the punchline; 2nd advances to Q&A
       const s8 = $('#s8');
       if (s8 && !s8.classList.contains('show-punchline')) {
         s8.classList.add('show-punchline');
+      } else {
+        clearTimeout(state.introTimer);
+        goTo(10);
       }
+    } else if (state.chapter === LAST) {
+      // Q&A (Final slide)
+      return;
     } else {
       // Advance chapters anywhere on the site
       clearTimeout(state.introTimer);
@@ -360,7 +368,7 @@
         e.preventDefault();
         return;
       }
-      if (state.chapter === LAST) {
+      if (state.chapter === 9) {
         const s8 = $('#s8');
         if (s8 && s8.classList.contains('show-punchline')) {
           s8.classList.remove('show-punchline');
